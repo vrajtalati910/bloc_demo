@@ -9,15 +9,12 @@ abstract class Client {
 
   Future<Either<HttpFailure, Map<String, dynamic>>> post({
     required String url,
-    bool isNewApi = false,
     Map<String, dynamic> params,
     Map<String, String> headers,
     Map<String, dynamic> requests,
   });
   Future<Either<HttpFailure, Map<String, dynamic>>> get({
     required String url,
-    bool isNewApi = false,
-    bool lngKeyUppercase = false,
     Map<String, dynamic> params,
     Map<String, String> headers,
   });
@@ -28,7 +25,7 @@ abstract class Client {
   });
   Future<Either<HttpFailure, Map<String, dynamic>>> delete({
     required String url,
-    bool isNewApi = false,
+    Map<String, dynamic> requests,
     Map<String, dynamic> params,
     Map<String, String> headers,
   });
@@ -40,5 +37,6 @@ abstract class Client {
     Map<String, String> headers,
     Map<String, String> requests,
     List<MapEntry<String, File>> files,
+    String? tempToken,
   });
 }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:bloc_demo/network/client.dart';
@@ -8,36 +9,38 @@ import 'package:injectable/injectable.dart';
 
 import 'http_failure.dart';
 
-coco(Object? obj, {String pre = ''}) {
-  // log("coco-$pre :: $obj");
-}
 
 @Injectable(as: Client)
 class HttpClient extends Client {
-  @override
-  Future<Either<HttpFailure, Map<String, dynamic>>> delete(
-      {required String url, bool isNewApi = false, Map<String, dynamic>? params, Map<String, String>? headers}) {
-    // TODO: implement delete
-    throw UnimplementedError();
-  }
+  const HttpClient();
 
   @override
-  Future<Either<HttpFailure, Map<String, dynamic>>> get(
-      {required String url,
-      bool isNewApi = false,
-      bool lngKeyUppercase = false,
-      Map<String, dynamic>? params,
-      Map<String, String>? headers}) {
-    // TODO: implement get
-    throw UnimplementedError();
-  }
+  Future<Either<HttpFailure, Map<String, dynamic>>> get({
+    required String url,
+    Map<String, dynamic>? params,
+    Map<String, String>? headers,
+  }) async {
+    final fullUrl = Uri.parse(url).replace(queryParameters: params);
+    log('URL ::::::::::::::::::::::::::::::::::::::::  $fullUrl');
 
-  // @override
-  // Future<Either<HttpFailure, Map<String, dynamic>>> getPublic(
-  //     {required String url, Map<String, dynamic>? params, Map<String, String>? headers}) {
-  //   // TODO: implement getPublic
-  //   throw UnimplementedError();
-  // }
+    try {
+      // final pref = await getIt.getAsync<SharedPreferences>();
+      return _returnResponse(
+        await http.get(
+          fullUrl,
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            ...headers ?? {},
+          },
+        ),
+      );
+    } on SocketException {
+      return left(const HttpFailure.noInternet());
+    } catch (e) {
+      rethrow;
+    }
+  }
 
   @override
   Future<Either<HttpFailure, Map<String, dynamic>>> getPublic({
@@ -48,8 +51,9 @@ class HttpClient extends Client {
     final fullUrl = Uri.parse(url).replace(
       queryParameters: params,
     );
-    coco(fullUrl, pre: 'ZEBPRAD API');
-
+    log(fullUrl.toString());
+    log(params.toString());
+    log(headers.toString());
     try {
       return _returnResponse(
         await http.get(
@@ -57,9 +61,41 @@ class HttpClient extends Client {
           headers: {
             ...headers ?? {},
           },
-        ).then((value) {
-          return value;
-        }),
+        ),
+      );
+    } on SocketException {
+      return left(const HttpFailure.noInternet());
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<Either<HttpFailure, Map<String, dynamic>>> post({
+    required String url,
+    Map<String, dynamic>? params,
+    Map<String, dynamic>? requests,
+    Map<String, String>? headers,
+  }) async {
+    final fullUrl = Uri.parse(url).replace(queryParameters: params);
+
+    log(fullUrl.toString());
+    log(params.toString());
+    log(requests.toString());
+    log(headers.toString());
+    try {
+      return _returnResponse(
+        await http.post(
+          fullUrl,
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            ...headers ?? {},
+          },
+          body: jsonEncode(
+            <String, dynamic>{...requests ?? <String, dynamic>{}},
+          ),
+        ),
       );
     } on SocketException {
       return left(const HttpFailure.noInternet());
@@ -71,9 +107,8 @@ class HttpClient extends Client {
   Either<HttpFailure, Map<String, dynamic>> _returnResponse(
     http.Response response,
   ) {
-    // log(response.statusCode.toString());
-    prettyPrintJson(response.body);
-
+    log(response.statusCode.toString());
+    log(response.body);
     switch (response.statusCode) {
       case 200:
         try {
@@ -101,7 +136,9 @@ class HttpClient extends Client {
       case 401:
         try {
           final data = json.decode(response.body) as Map<String, dynamic>;
-          // logoutUnauthenticate();
+          // HiveService.removeAuth().then(
+          //   (value) => getIt<AuthenticationBloc>().add(AuthenticationEvent.check()),
+          // );
           return left(
             HttpFailure.badRequest(
               (data['login'] ?? data['message'] ?? 'Unauthorized') as String,
@@ -113,10 +150,33 @@ class HttpClient extends Client {
             HttpFailure.badRequest('Unauthorized', response.statusCode),
           );
         }
-      // return left(
-      //     HttpFailure.unauthorized('Unauthorized', response.statusCode));
+      case 422:
+        try {
+          final data = json.decode(response.body) as Map<String, dynamic>;
+          // HiveService.removeAuth().then(
+          //   (value) => getIt<AuthenticationBloc>().add(AuthenticationEvent.check()),
+          // );
+          return left(
+            HttpFailure.invalidInput(
+              (data['message'] ?? 'Unauthorized') as String,
+              response.statusCode,
+            ),
+          );
+        } catch (e) {
+          return left(
+            HttpFailure.badRequest('Unauthorized', response.statusCode),
+          );
+        }
+
       case 403:
-        return left(HttpFailure.forbidden('Forbidden', response.statusCode));
+        try {
+          final dynamic data = json.decode(utf8.decode(response.bodyBytes));
+
+          return right(data as Map<String, dynamic>);
+        } catch (e) {
+          return left(const HttpFailure.parsing());
+        }
+      // return left(HttpFailure.forbidden('Forbidden', response.statusCode));
       default:
         return left(
           HttpFailure.fetchData(
@@ -128,35 +188,101 @@ class HttpClient extends Client {
     }
   }
 
-  static void prettyPrintJson(String input) {
-    // coco(input);
-    // log(input);
-    return;
-    // var object = decoder.convert(input);
-    // var prettyString = encoder.convert(object);
-    // prettyString.split('\n').forEach((element) => log(element));
+  @override
+  Future<Either<HttpFailure, Map<String, dynamic>>> delete({
+    required String url,
+    Map<String, dynamic>? requests,
+    Map<String, dynamic>? params,
+    Map<String, String>? headers,
+  }) async {
+    final fullUrl = Uri.parse(url).replace(
+      queryParameters: <String, dynamic>{
+        ...params ?? <String, dynamic>{},
+      },
+    );
+    log(fullUrl.toString());
+    log(params.toString());
+    log(requests.toString());
+    log(headers.toString());
+    try {
+      return _returnResponse(
+        await http.delete(
+          fullUrl,
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            ...headers ?? {},
+          },
+          body: jsonEncode(
+            <String, dynamic>{...requests ?? <String, dynamic>{}},
+          ),
+        ),
+      );
+    } on SocketException {
+      return left(const HttpFailure.noInternet());
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
-  Future<Either<HttpFailure, Map<String, dynamic>>> multipartRequest(
-      {required String url,
-      String method = 'POST',
-      Map<String, dynamic>? params,
-      Map<String, String>? headers,
-      Map<String, String>? requests,
-      List<MapEntry<String, File>>? files}) {
-    // TODO: implement multipartRequest
-    throw UnimplementedError();
+  Future<Either<HttpFailure, Map<String, dynamic>>> multipartRequest({
+    required String url,
+    Map<String, dynamic>? params,
+    Map<String, String>? headers,
+    Map<String, String>? requests,
+    List<MapEntry<String, File>> files = const [],
+    String method = 'POST',
+    String? tempToken,
+  }) async {
+    final fullUrl = Uri.parse(url).replace(queryParameters: params);
+
+    try {
+      final multipartRequest = http.MultipartRequest(
+        method,
+        fullUrl,
+      );
+
+      multipartRequest.headers.addAll(
+        {
+          ...headers ?? {},
+        },
+      );
+
+      if (files.isNotEmpty) {
+        for (final fileData in files) {
+          multipartRequest.files.add(
+            await http.MultipartFile.fromPath(
+              fileData.key,
+              fileData.value.path,
+            ),
+          );
+        }
+      }
+
+      multipartRequest.fields.addAll(requests!);
+
+      final multiPartResponse = await multipartRequest.send();
+      final response = await http.Response.fromStream(multiPartResponse);
+
+      return _returnResponse(response);
+    } on SocketException {
+      return left(const HttpFailure.noInternet());
+    } catch (e) {
+      rethrow;
+    }
   }
 
-  @override
-  Future<Either<HttpFailure, Map<String, dynamic>>> post(
-      {required String url,
-      bool isNewApi = false,
-      Map<String, dynamic>? params,
-      Map<String, String>? headers,
-      Map<String, dynamic>? requests}) {
-    // TODO: implement post
-    throw UnimplementedError();
-  }
+//   Future<Map<String, String>> getToken(Map<String ,dynamic>? headers) async {
+//     final pref = await SharedPreferences.getInstance();
+//     final token = pref.getString(AppApi.userToken);
+//     final map = {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       if (token != null) 'Authorization': 'Bearer $token',
+//       if(headers != null) ...headers ?? {},
+//     };
+
+//     return map;
+//   }
 }
