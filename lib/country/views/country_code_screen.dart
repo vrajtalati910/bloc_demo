@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+
+import '../../injecter/injector.dart';
 import '../bloc/country_bloc.dart';
-import '../injecter/injector.dart';
 
 class CountryScreen extends StatefulWidget {
   const CountryScreen({super.key});
@@ -33,13 +34,16 @@ class _CountryScreenState extends State<CountryScreen> {
                     child: ListView.builder(
                       itemCount: state.countyList.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              state.countyList[index].name ?? "",
-                              style: const TextStyle(color: Colors.black),
-                            ));
+                        return ExpansionTile(
+                          title: Container(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                textAlign: TextAlign.center,
+                                state.countyList[index].name ?? "",
+                                style: const TextStyle(color: Colors.black),
+                              )),
+                          children: const [],
+                        );
                       },
                     ),
                   );

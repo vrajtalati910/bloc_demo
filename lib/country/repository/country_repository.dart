@@ -6,8 +6,8 @@ import 'package:bloc_demo/utlityu/app_string.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-import '../network/client.dart';
-import '../network/http_failure.dart';
+import '../../network/client.dart';
+import '../../network/http_failure.dart';
 import '../responce/country_list_reponce.dart';
 import 'i_country_repository.dart';
 

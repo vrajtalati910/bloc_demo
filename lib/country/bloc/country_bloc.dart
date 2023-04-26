@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import '../../network/http_failure.dart';
 
 import '../model/country_code_model.dart';
-import '../network/http_failure.dart';
 import '../repository/i_country_repository.dart';
 
 part 'country_bloc.freezed.dart';

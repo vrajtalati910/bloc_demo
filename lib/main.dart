@@ -1,5 +1,5 @@
 import 'package:bloc_demo/injecter/injector.dart';
-import 'package:bloc_demo/views/country_code_screen.dart';
+import 'package:bloc_demo/country/views/country_code_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async {

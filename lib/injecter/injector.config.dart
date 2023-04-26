@@ -9,11 +9,11 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:bloc_demo/bloc/country_bloc.dart' as _i7;
+import 'package:bloc_demo/country/bloc/country_bloc.dart' as _i7;
+import 'package:bloc_demo/country/repository/country_repository.dart' as _i6;
+import 'package:bloc_demo/country/repository/i_country_repository.dart' as _i5;
 import 'package:bloc_demo/network/client.dart' as _i3;
 import 'package:bloc_demo/network/http_client.dart' as _i4;
-import 'package:bloc_demo/repository/country_repository.dart' as _i6;
-import 'package:bloc_demo/repository/i_country_repository.dart' as _i5;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
