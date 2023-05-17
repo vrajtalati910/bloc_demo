@@ -67,4 +67,33 @@ class CountryRepository extends ICountryRepository {
       }
     });
   }
+
+  @override
+  Future<Either<HttpFailure, CountryListReponce>> loadCity({required String countryId,required String stateId}) async {
+    final response = await client.getPublic(
+      url: AppString.cityAPI,
+      params: {
+        'country_id': countryId,
+        'state_id': stateId,
+
+      }
+    );
+
+    return response.fold(left, (r) {
+      try {
+        final data = CountryListReponce.fromJson(r);
+        if (data.status == '1') {
+          return right(data);
+        }
+        return left(
+          HttpFailure.parsing(
+            data.message ?? '',
+            int.parse(data.status ?? '0'),
+          ),
+        );
+      } catch (e) {
+        return left(const HttpFailure.parsing());
+      }
+    });
+  }
 }

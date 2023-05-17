@@ -20,18 +20,21 @@ mixin _$CountryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() addCountry,
     required TResult Function(String id) addState,
+    required TResult Function(String countryId, String stateId) loadCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addCountry,
     TResult? Function(String id)? addState,
+    TResult? Function(String countryId, String stateId)? loadCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addCountry,
     TResult Function(String id)? addState,
+    TResult Function(String countryId, String stateId)? loadCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$CountryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadCountry value) addCountry,
     required TResult Function(_LoadState value) addState,
+    required TResult Function(_LoadCity value) loadCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadCountry value)? addCountry,
     TResult? Function(_LoadState value)? addState,
+    TResult? Function(_LoadCity value)? loadCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadCountry value)? addCountry,
     TResult Function(_LoadState value)? addState,
+    TResult Function(_LoadCity value)? loadCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$_LoadCountry implements _LoadCountry {
   TResult when<TResult extends Object?>({
     required TResult Function() addCountry,
     required TResult Function(String id) addState,
+    required TResult Function(String countryId, String stateId) loadCity,
   }) {
     return addCountry();
   }
@@ -123,6 +130,7 @@ class _$_LoadCountry implements _LoadCountry {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addCountry,
     TResult? Function(String id)? addState,
+    TResult? Function(String countryId, String stateId)? loadCity,
   }) {
     return addCountry?.call();
   }
@@ -132,6 +140,7 @@ class _$_LoadCountry implements _LoadCountry {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addCountry,
     TResult Function(String id)? addState,
+    TResult Function(String countryId, String stateId)? loadCity,
     required TResult orElse(),
   }) {
     if (addCountry != null) {
@@ -145,6 +154,7 @@ class _$_LoadCountry implements _LoadCountry {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadCountry value) addCountry,
     required TResult Function(_LoadState value) addState,
+    required TResult Function(_LoadCity value) loadCity,
   }) {
     return addCountry(this);
   }
@@ -154,6 +164,7 @@ class _$_LoadCountry implements _LoadCountry {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadCountry value)? addCountry,
     TResult? Function(_LoadState value)? addState,
+    TResult? Function(_LoadCity value)? loadCity,
   }) {
     return addCountry?.call(this);
   }
@@ -163,6 +174,7 @@ class _$_LoadCountry implements _LoadCountry {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadCountry value)? addCountry,
     TResult Function(_LoadState value)? addState,
+    TResult Function(_LoadCity value)? loadCity,
     required TResult orElse(),
   }) {
     if (addCountry != null) {
@@ -242,6 +254,7 @@ class _$_LoadState implements _LoadState {
   TResult when<TResult extends Object?>({
     required TResult Function() addCountry,
     required TResult Function(String id) addState,
+    required TResult Function(String countryId, String stateId) loadCity,
   }) {
     return addState(id);
   }
@@ -251,6 +264,7 @@ class _$_LoadState implements _LoadState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addCountry,
     TResult? Function(String id)? addState,
+    TResult? Function(String countryId, String stateId)? loadCity,
   }) {
     return addState?.call(id);
   }
@@ -260,6 +274,7 @@ class _$_LoadState implements _LoadState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addCountry,
     TResult Function(String id)? addState,
+    TResult Function(String countryId, String stateId)? loadCity,
     required TResult orElse(),
   }) {
     if (addState != null) {
@@ -273,6 +288,7 @@ class _$_LoadState implements _LoadState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadCountry value) addCountry,
     required TResult Function(_LoadState value) addState,
+    required TResult Function(_LoadCity value) loadCity,
   }) {
     return addState(this);
   }
@@ -282,6 +298,7 @@ class _$_LoadState implements _LoadState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadCountry value)? addCountry,
     TResult? Function(_LoadState value)? addState,
+    TResult? Function(_LoadCity value)? loadCity,
   }) {
     return addState?.call(this);
   }
@@ -291,6 +308,7 @@ class _$_LoadState implements _LoadState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadCountry value)? addCountry,
     TResult Function(_LoadState value)? addState,
+    TResult Function(_LoadCity value)? loadCity,
     required TResult orElse(),
   }) {
     if (addState != null) {
@@ -310,9 +328,161 @@ abstract class _LoadState implements CountryEvent {
 }
 
 /// @nodoc
+abstract class _$$_LoadCityCopyWith<$Res> {
+  factory _$$_LoadCityCopyWith(
+          _$_LoadCity value, $Res Function(_$_LoadCity) then) =
+      __$$_LoadCityCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String countryId, String stateId});
+}
+
+/// @nodoc
+class __$$_LoadCityCopyWithImpl<$Res>
+    extends _$CountryEventCopyWithImpl<$Res, _$_LoadCity>
+    implements _$$_LoadCityCopyWith<$Res> {
+  __$$_LoadCityCopyWithImpl(
+      _$_LoadCity _value, $Res Function(_$_LoadCity) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? countryId = null,
+    Object? stateId = null,
+  }) {
+    return _then(_$_LoadCity(
+      countryId: null == countryId
+          ? _value.countryId
+          : countryId // ignore: cast_nullable_to_non_nullable
+              as String,
+      stateId: null == stateId
+          ? _value.stateId
+          : stateId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LoadCity implements _LoadCity {
+  const _$_LoadCity({required this.countryId, required this.stateId});
+
+  @override
+  final String countryId;
+  @override
+  final String stateId;
+
+  @override
+  String toString() {
+    return 'CountryEvent.loadCity(countryId: $countryId, stateId: $stateId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LoadCity &&
+            (identical(other.countryId, countryId) ||
+                other.countryId == countryId) &&
+            (identical(other.stateId, stateId) || other.stateId == stateId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, countryId, stateId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoadCityCopyWith<_$_LoadCity> get copyWith =>
+      __$$_LoadCityCopyWithImpl<_$_LoadCity>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() addCountry,
+    required TResult Function(String id) addState,
+    required TResult Function(String countryId, String stateId) loadCity,
+  }) {
+    return loadCity(countryId, stateId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? addCountry,
+    TResult? Function(String id)? addState,
+    TResult? Function(String countryId, String stateId)? loadCity,
+  }) {
+    return loadCity?.call(countryId, stateId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? addCountry,
+    TResult Function(String id)? addState,
+    TResult Function(String countryId, String stateId)? loadCity,
+    required TResult orElse(),
+  }) {
+    if (loadCity != null) {
+      return loadCity(countryId, stateId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadCountry value) addCountry,
+    required TResult Function(_LoadState value) addState,
+    required TResult Function(_LoadCity value) loadCity,
+  }) {
+    return loadCity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadCountry value)? addCountry,
+    TResult? Function(_LoadState value)? addState,
+    TResult? Function(_LoadCity value)? loadCity,
+  }) {
+    return loadCity?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadCountry value)? addCountry,
+    TResult Function(_LoadState value)? addState,
+    TResult Function(_LoadCity value)? loadCity,
+    required TResult orElse(),
+  }) {
+    if (loadCity != null) {
+      return loadCity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadCity implements CountryEvent {
+  const factory _LoadCity(
+      {required final String countryId,
+      required final String stateId}) = _$_LoadCity;
+
+  String get countryId;
+  String get stateId;
+  @JsonKey(ignore: true)
+  _$$_LoadCityCopyWith<_$_LoadCity> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CountryState {
   List<CountryModel> get countyList => throw _privateConstructorUsedError;
   List<CountryModel> get stateList => throw _privateConstructorUsedError;
+  List<CountryModel> get cityList => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   HttpFailure? get failure => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
@@ -331,6 +501,7 @@ abstract class $CountryStateCopyWith<$Res> {
   $Res call(
       {List<CountryModel> countyList,
       List<CountryModel> stateList,
+      List<CountryModel> cityList,
       bool isLoading,
       HttpFailure? failure,
       String? message});
@@ -353,6 +524,7 @@ class _$CountryStateCopyWithImpl<$Res, $Val extends CountryState>
   $Res call({
     Object? countyList = null,
     Object? stateList = null,
+    Object? cityList = null,
     Object? isLoading = null,
     Object? failure = freezed,
     Object? message = freezed,
@@ -365,6 +537,10 @@ class _$CountryStateCopyWithImpl<$Res, $Val extends CountryState>
       stateList: null == stateList
           ? _value.stateList
           : stateList // ignore: cast_nullable_to_non_nullable
+              as List<CountryModel>,
+      cityList: null == cityList
+          ? _value.cityList
+          : cityList // ignore: cast_nullable_to_non_nullable
               as List<CountryModel>,
       isLoading: null == isLoading
           ? _value.isLoading
@@ -405,6 +581,7 @@ abstract class _$$_CountryStateCopyWith<$Res>
   $Res call(
       {List<CountryModel> countyList,
       List<CountryModel> stateList,
+      List<CountryModel> cityList,
       bool isLoading,
       HttpFailure? failure,
       String? message});
@@ -426,6 +603,7 @@ class __$$_CountryStateCopyWithImpl<$Res>
   $Res call({
     Object? countyList = null,
     Object? stateList = null,
+    Object? cityList = null,
     Object? isLoading = null,
     Object? failure = freezed,
     Object? message = freezed,
@@ -438,6 +616,10 @@ class __$$_CountryStateCopyWithImpl<$Res>
       stateList: null == stateList
           ? _value._stateList
           : stateList // ignore: cast_nullable_to_non_nullable
+              as List<CountryModel>,
+      cityList: null == cityList
+          ? _value._cityList
+          : cityList // ignore: cast_nullable_to_non_nullable
               as List<CountryModel>,
       isLoading: null == isLoading
           ? _value.isLoading
@@ -461,11 +643,13 @@ class _$_CountryState extends _CountryState {
   const _$_CountryState(
       {final List<CountryModel> countyList = const [],
       final List<CountryModel> stateList = const [],
+      final List<CountryModel> cityList = const [],
       this.isLoading = false,
       this.failure,
       this.message})
       : _countyList = countyList,
         _stateList = stateList,
+        _cityList = cityList,
         super._();
 
   final List<CountryModel> _countyList;
@@ -486,6 +670,15 @@ class _$_CountryState extends _CountryState {
     return EqualUnmodifiableListView(_stateList);
   }
 
+  final List<CountryModel> _cityList;
+  @override
+  @JsonKey()
+  List<CountryModel> get cityList {
+    if (_cityList is EqualUnmodifiableListView) return _cityList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cityList);
+  }
+
   @override
   @JsonKey()
   final bool isLoading;
@@ -496,7 +689,7 @@ class _$_CountryState extends _CountryState {
 
   @override
   String toString() {
-    return 'CountryState(countyList: $countyList, stateList: $stateList, isLoading: $isLoading, failure: $failure, message: $message)';
+    return 'CountryState(countyList: $countyList, stateList: $stateList, cityList: $cityList, isLoading: $isLoading, failure: $failure, message: $message)';
   }
 
   @override
@@ -508,6 +701,7 @@ class _$_CountryState extends _CountryState {
                 .equals(other._countyList, _countyList) &&
             const DeepCollectionEquality()
                 .equals(other._stateList, _stateList) &&
+            const DeepCollectionEquality().equals(other._cityList, _cityList) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.failure, failure) || other.failure == failure) &&
@@ -519,6 +713,7 @@ class _$_CountryState extends _CountryState {
       runtimeType,
       const DeepCollectionEquality().hash(_countyList),
       const DeepCollectionEquality().hash(_stateList),
+      const DeepCollectionEquality().hash(_cityList),
       isLoading,
       failure,
       message);
@@ -534,6 +729,7 @@ abstract class _CountryState extends CountryState {
   const factory _CountryState(
       {final List<CountryModel> countyList,
       final List<CountryModel> stateList,
+      final List<CountryModel> cityList,
       final bool isLoading,
       final HttpFailure? failure,
       final String? message}) = _$_CountryState;
@@ -543,6 +739,8 @@ abstract class _CountryState extends CountryState {
   List<CountryModel> get countyList;
   @override
   List<CountryModel> get stateList;
+  @override
+  List<CountryModel> get cityList;
   @override
   bool get isLoading;
   @override

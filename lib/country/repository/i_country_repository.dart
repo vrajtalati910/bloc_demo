@@ -15,4 +15,5 @@ abstract class ICountryRepository {
   Future<Either<HttpFailure, CountryListReponce>> loadCountry();
 
   Future<Either<HttpFailure, CountryListReponce>> loadState({required String id});
+  Future<Either<HttpFailure, CountryListReponce>> loadCity({required String countryId,required String stateId});
 }
