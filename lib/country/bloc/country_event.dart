@@ -7,4 +7,5 @@ class CountryEvent with _$CountryEvent {
   const factory CountryEvent.loadCity({required String countryId, required String stateId}) = _LoadCity;
   const factory CountryEvent.editCity(
       {required String cityId, required String countryId, required String stateId, required String name}) = _EditCity;
+  const factory CountryEvent.deleteCity({required String id}) = _DeleteCity;
 }

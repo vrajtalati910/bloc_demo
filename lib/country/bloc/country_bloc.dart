@@ -17,6 +17,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
     on<_LoadState>(_loadState);
     on<_LoadCity>(_loadCity);
     on<_EditCity>(_editCity);
+    on<_DeleteCity>(_deleteCity);
   }
   final ICountryRepository repository;
 
@@ -139,6 +140,34 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
             failure: null,
             isLoading: false,
             message: 'City Edit Sucess',
+          );
+        },
+      ),
+    );
+  }
+
+  Future<void> _deleteCity(_DeleteCity event, Emitter<CountryState> emit) async {
+    emit(
+      state.copyWith(
+        isLoading: true,
+        failure: null,
+      ),
+    );
+
+    final failureOrCategory = await repository.deleteCity(id: event.id);
+    emit(
+      await failureOrCategory.fold(
+        (l) => state.copyWith(
+          isLoading: false,
+          failure: l,
+          message: l.message,
+        ),
+        (r) async {
+          return state.copyWith(
+            cityList: [...state.cityList]..removeWhere((element) => element.id.toString() == event.id),
+            failure: null,
+            isLoading: false,
+            message: '',
           );
         },
       ),

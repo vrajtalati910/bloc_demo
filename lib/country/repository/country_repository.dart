@@ -114,4 +114,26 @@ class CountryRepository extends ICountryRepository {
       }
     });
   }
+
+  @override
+  Future<Either<HttpFailure, CountryListReponce>> deleteCity({required String id}) async {
+    final response = await client.delete(url: AppString.cityDeleteAPI(id), params: {});
+
+    return response.fold(left, (r) {
+      try {
+        final data = CountryListReponce.fromJson(r);
+        if (data.status == '1') {
+          return right(data);
+        }
+        return left(
+          HttpFailure.parsing(
+            data.message ?? '',
+            int.parse(data.status ?? '0'),
+          ),
+        );
+      } catch (e) {
+        return left(const HttpFailure.parsing());
+      }
+    });
+  }
 }

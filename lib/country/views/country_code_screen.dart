@@ -155,6 +155,45 @@ class _CountryScreenState extends State<CountryScreen> {
                                                           ),
                                                         );
                                                     Navigator.of(context, rootNavigator: true).pop();
+                                                    _controller.clear();
+                                                  },
+                                                  child: const Text('Yes'),
+                                                ),
+                                                ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context, rootNavigator: true).pop();
+                                                    _controller.clear();
+                                                  },
+                                                  child: const Text('No'),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: const Icon(Icons.edit)),
+                              GestureDetector(
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (_) => BlocProvider<CountryBloc>.value(
+                                        value: BlocProvider.of<CountryBloc>(context),
+                                        child: AlertDialog(
+                                          title: const Text('Delete City'),
+                                          actions: [
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                ElevatedButton(
+                                                  onPressed: () {
+                                                    context.read<CountryBloc>().add(
+                                                          CountryEvent.deleteCity(
+                                                            id: (state.cityList[index].id ?? 0).toString(),
+                                                          ),
+                                                        );
+                                                    Navigator.of(context, rootNavigator: true).pop();
                                                   },
                                                   child: const Text('Yes'),
                                                 ),
@@ -171,8 +210,7 @@ class _CountryScreenState extends State<CountryScreen> {
                                       ),
                                     );
                                   },
-                                  child: const Icon(Icons.edit)),
-                              GestureDetector(onTap: () {}, child: const Icon(Icons.delete))
+                                  child: const Icon(Icons.delete))
                             ],
                           );
                         }),

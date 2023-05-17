@@ -24,6 +24,7 @@ mixin _$CountryEvent {
     required TResult Function(
             String cityId, String countryId, String stateId, String name)
         editCity,
+    required TResult Function(String id) deleteCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$CountryEvent {
     TResult? Function(
             String cityId, String countryId, String stateId, String name)?
         editCity,
+    TResult? Function(String id)? deleteCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$CountryEvent {
     TResult Function(
             String cityId, String countryId, String stateId, String name)?
         editCity,
+    TResult Function(String id)? deleteCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -53,6 +56,7 @@ mixin _$CountryEvent {
     required TResult Function(_LoadState value) addState,
     required TResult Function(_LoadCity value) loadCity,
     required TResult Function(_EditCity value) editCity,
+    required TResult Function(_DeleteCity value) deleteCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +65,7 @@ mixin _$CountryEvent {
     TResult? Function(_LoadState value)? addState,
     TResult? Function(_LoadCity value)? loadCity,
     TResult? Function(_EditCity value)? editCity,
+    TResult? Function(_DeleteCity value)? deleteCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$CountryEvent {
     TResult Function(_LoadState value)? addState,
     TResult Function(_LoadCity value)? loadCity,
     TResult Function(_EditCity value)? editCity,
+    TResult Function(_DeleteCity value)? deleteCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,6 +142,7 @@ class _$_LoadCountry implements _LoadCountry {
     required TResult Function(
             String cityId, String countryId, String stateId, String name)
         editCity,
+    required TResult Function(String id) deleteCity,
   }) {
     return addCountry();
   }
@@ -149,6 +156,7 @@ class _$_LoadCountry implements _LoadCountry {
     TResult? Function(
             String cityId, String countryId, String stateId, String name)?
         editCity,
+    TResult? Function(String id)? deleteCity,
   }) {
     return addCountry?.call();
   }
@@ -162,6 +170,7 @@ class _$_LoadCountry implements _LoadCountry {
     TResult Function(
             String cityId, String countryId, String stateId, String name)?
         editCity,
+    TResult Function(String id)? deleteCity,
     required TResult orElse(),
   }) {
     if (addCountry != null) {
@@ -177,6 +186,7 @@ class _$_LoadCountry implements _LoadCountry {
     required TResult Function(_LoadState value) addState,
     required TResult Function(_LoadCity value) loadCity,
     required TResult Function(_EditCity value) editCity,
+    required TResult Function(_DeleteCity value) deleteCity,
   }) {
     return addCountry(this);
   }
@@ -188,6 +198,7 @@ class _$_LoadCountry implements _LoadCountry {
     TResult? Function(_LoadState value)? addState,
     TResult? Function(_LoadCity value)? loadCity,
     TResult? Function(_EditCity value)? editCity,
+    TResult? Function(_DeleteCity value)? deleteCity,
   }) {
     return addCountry?.call(this);
   }
@@ -199,6 +210,7 @@ class _$_LoadCountry implements _LoadCountry {
     TResult Function(_LoadState value)? addState,
     TResult Function(_LoadCity value)? loadCity,
     TResult Function(_EditCity value)? editCity,
+    TResult Function(_DeleteCity value)? deleteCity,
     required TResult orElse(),
   }) {
     if (addCountry != null) {
@@ -282,6 +294,7 @@ class _$_LoadState implements _LoadState {
     required TResult Function(
             String cityId, String countryId, String stateId, String name)
         editCity,
+    required TResult Function(String id) deleteCity,
   }) {
     return addState(id);
   }
@@ -295,6 +308,7 @@ class _$_LoadState implements _LoadState {
     TResult? Function(
             String cityId, String countryId, String stateId, String name)?
         editCity,
+    TResult? Function(String id)? deleteCity,
   }) {
     return addState?.call(id);
   }
@@ -308,6 +322,7 @@ class _$_LoadState implements _LoadState {
     TResult Function(
             String cityId, String countryId, String stateId, String name)?
         editCity,
+    TResult Function(String id)? deleteCity,
     required TResult orElse(),
   }) {
     if (addState != null) {
@@ -323,6 +338,7 @@ class _$_LoadState implements _LoadState {
     required TResult Function(_LoadState value) addState,
     required TResult Function(_LoadCity value) loadCity,
     required TResult Function(_EditCity value) editCity,
+    required TResult Function(_DeleteCity value) deleteCity,
   }) {
     return addState(this);
   }
@@ -334,6 +350,7 @@ class _$_LoadState implements _LoadState {
     TResult? Function(_LoadState value)? addState,
     TResult? Function(_LoadCity value)? loadCity,
     TResult? Function(_EditCity value)? editCity,
+    TResult? Function(_DeleteCity value)? deleteCity,
   }) {
     return addState?.call(this);
   }
@@ -345,6 +362,7 @@ class _$_LoadState implements _LoadState {
     TResult Function(_LoadState value)? addState,
     TResult Function(_LoadCity value)? loadCity,
     TResult Function(_EditCity value)? editCity,
+    TResult Function(_DeleteCity value)? deleteCity,
     required TResult orElse(),
   }) {
     if (addState != null) {
@@ -442,6 +460,7 @@ class _$_LoadCity implements _LoadCity {
     required TResult Function(
             String cityId, String countryId, String stateId, String name)
         editCity,
+    required TResult Function(String id) deleteCity,
   }) {
     return loadCity(countryId, stateId);
   }
@@ -455,6 +474,7 @@ class _$_LoadCity implements _LoadCity {
     TResult? Function(
             String cityId, String countryId, String stateId, String name)?
         editCity,
+    TResult? Function(String id)? deleteCity,
   }) {
     return loadCity?.call(countryId, stateId);
   }
@@ -468,6 +488,7 @@ class _$_LoadCity implements _LoadCity {
     TResult Function(
             String cityId, String countryId, String stateId, String name)?
         editCity,
+    TResult Function(String id)? deleteCity,
     required TResult orElse(),
   }) {
     if (loadCity != null) {
@@ -483,6 +504,7 @@ class _$_LoadCity implements _LoadCity {
     required TResult Function(_LoadState value) addState,
     required TResult Function(_LoadCity value) loadCity,
     required TResult Function(_EditCity value) editCity,
+    required TResult Function(_DeleteCity value) deleteCity,
   }) {
     return loadCity(this);
   }
@@ -494,6 +516,7 @@ class _$_LoadCity implements _LoadCity {
     TResult? Function(_LoadState value)? addState,
     TResult? Function(_LoadCity value)? loadCity,
     TResult? Function(_EditCity value)? editCity,
+    TResult? Function(_DeleteCity value)? deleteCity,
   }) {
     return loadCity?.call(this);
   }
@@ -505,6 +528,7 @@ class _$_LoadCity implements _LoadCity {
     TResult Function(_LoadState value)? addState,
     TResult Function(_LoadCity value)? loadCity,
     TResult Function(_EditCity value)? editCity,
+    TResult Function(_DeleteCity value)? deleteCity,
     required TResult orElse(),
   }) {
     if (loadCity != null) {
@@ -626,6 +650,7 @@ class _$_EditCity implements _EditCity {
     required TResult Function(
             String cityId, String countryId, String stateId, String name)
         editCity,
+    required TResult Function(String id) deleteCity,
   }) {
     return editCity(cityId, countryId, stateId, name);
   }
@@ -639,6 +664,7 @@ class _$_EditCity implements _EditCity {
     TResult? Function(
             String cityId, String countryId, String stateId, String name)?
         editCity,
+    TResult? Function(String id)? deleteCity,
   }) {
     return editCity?.call(cityId, countryId, stateId, name);
   }
@@ -652,6 +678,7 @@ class _$_EditCity implements _EditCity {
     TResult Function(
             String cityId, String countryId, String stateId, String name)?
         editCity,
+    TResult Function(String id)? deleteCity,
     required TResult orElse(),
   }) {
     if (editCity != null) {
@@ -667,6 +694,7 @@ class _$_EditCity implements _EditCity {
     required TResult Function(_LoadState value) addState,
     required TResult Function(_LoadCity value) loadCity,
     required TResult Function(_EditCity value) editCity,
+    required TResult Function(_DeleteCity value) deleteCity,
   }) {
     return editCity(this);
   }
@@ -678,6 +706,7 @@ class _$_EditCity implements _EditCity {
     TResult? Function(_LoadState value)? addState,
     TResult? Function(_LoadCity value)? loadCity,
     TResult? Function(_EditCity value)? editCity,
+    TResult? Function(_DeleteCity value)? deleteCity,
   }) {
     return editCity?.call(this);
   }
@@ -689,6 +718,7 @@ class _$_EditCity implements _EditCity {
     TResult Function(_LoadState value)? addState,
     TResult Function(_LoadCity value)? loadCity,
     TResult Function(_EditCity value)? editCity,
+    TResult Function(_DeleteCity value)? deleteCity,
     required TResult orElse(),
   }) {
     if (editCity != null) {
@@ -711,6 +741,163 @@ abstract class _EditCity implements CountryEvent {
   String get name;
   @JsonKey(ignore: true)
   _$$_EditCityCopyWith<_$_EditCity> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DeleteCityCopyWith<$Res> {
+  factory _$$_DeleteCityCopyWith(
+          _$_DeleteCity value, $Res Function(_$_DeleteCity) then) =
+      __$$_DeleteCityCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$_DeleteCityCopyWithImpl<$Res>
+    extends _$CountryEventCopyWithImpl<$Res, _$_DeleteCity>
+    implements _$$_DeleteCityCopyWith<$Res> {
+  __$$_DeleteCityCopyWithImpl(
+      _$_DeleteCity _value, $Res Function(_$_DeleteCity) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$_DeleteCity(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeleteCity implements _DeleteCity {
+  const _$_DeleteCity({required this.id});
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'CountryEvent.deleteCity(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeleteCity &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeleteCityCopyWith<_$_DeleteCity> get copyWith =>
+      __$$_DeleteCityCopyWithImpl<_$_DeleteCity>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() addCountry,
+    required TResult Function(String id) addState,
+    required TResult Function(String countryId, String stateId) loadCity,
+    required TResult Function(
+            String cityId, String countryId, String stateId, String name)
+        editCity,
+    required TResult Function(String id) deleteCity,
+  }) {
+    return deleteCity(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? addCountry,
+    TResult? Function(String id)? addState,
+    TResult? Function(String countryId, String stateId)? loadCity,
+    TResult? Function(
+            String cityId, String countryId, String stateId, String name)?
+        editCity,
+    TResult? Function(String id)? deleteCity,
+  }) {
+    return deleteCity?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? addCountry,
+    TResult Function(String id)? addState,
+    TResult Function(String countryId, String stateId)? loadCity,
+    TResult Function(
+            String cityId, String countryId, String stateId, String name)?
+        editCity,
+    TResult Function(String id)? deleteCity,
+    required TResult orElse(),
+  }) {
+    if (deleteCity != null) {
+      return deleteCity(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadCountry value) addCountry,
+    required TResult Function(_LoadState value) addState,
+    required TResult Function(_LoadCity value) loadCity,
+    required TResult Function(_EditCity value) editCity,
+    required TResult Function(_DeleteCity value) deleteCity,
+  }) {
+    return deleteCity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadCountry value)? addCountry,
+    TResult? Function(_LoadState value)? addState,
+    TResult? Function(_LoadCity value)? loadCity,
+    TResult? Function(_EditCity value)? editCity,
+    TResult? Function(_DeleteCity value)? deleteCity,
+  }) {
+    return deleteCity?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadCountry value)? addCountry,
+    TResult Function(_LoadState value)? addState,
+    TResult Function(_LoadCity value)? loadCity,
+    TResult Function(_EditCity value)? editCity,
+    TResult Function(_DeleteCity value)? deleteCity,
+    required TResult orElse(),
+  }) {
+    if (deleteCity != null) {
+      return deleteCity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteCity implements CountryEvent {
+  const factory _DeleteCity({required final String id}) = _$_DeleteCity;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$_DeleteCityCopyWith<_$_DeleteCity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
