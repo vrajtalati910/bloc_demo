@@ -14,6 +14,8 @@ part 'country_state.dart';
 class CountryBloc extends Bloc<CountryEvent, CountryState> {
   CountryBloc({required this.repository}) : super(const CountryState()) {
     on<_LoadCountry>(_loadCategory);
+    on<_LoadState>(_loadState);
+    
   }
   final ICountryRepository repository;
 
@@ -37,6 +39,35 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
         (r) async {
           return state.copyWith(
             countyList: r.data,
+            failure: null,
+            isLoading: false,
+            message: '',
+          );
+        },
+      ),
+    );
+  }
+
+  Future<void> _loadState(_LoadState event, Emitter<CountryState> emit) async {
+    emit(
+      state.copyWith(
+        isLoading: true,
+        failure: null,
+        stateList: [],
+      ),
+    );
+
+    final failureOrCategory = await repository.loadState(id: event.id );
+    emit(
+      await failureOrCategory.fold(
+        (l) => state.copyWith(
+          isLoading: false,
+          failure: l,
+          message: l.message,
+        ),
+        (r) async {
+          return state.copyWith(
+            stateList: r.data,
             failure: null,
             isLoading: false,
             message: '',

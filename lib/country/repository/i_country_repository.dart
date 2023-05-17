@@ -13,4 +13,6 @@ abstract class ICountryRepository {
   final Client client;
 
   Future<Either<HttpFailure, CountryListReponce>> loadCountry();
+
+  Future<Either<HttpFailure, CountryListReponce>> loadState({required String id});
 }
