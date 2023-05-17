@@ -21,6 +21,7 @@ class _CountryScreenState extends State<CountryScreen> {
   CountryModel? countrySelected;
   CountryModel? stateSelected;
   CountryModel? citySelected;
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -130,7 +131,47 @@ class _CountryScreenState extends State<CountryScreen> {
                                     style: const TextStyle(color: Colors.black),
                                   )),
                               const Spacer(),
-                              GestureDetector(onTap: () {}, child: const Icon(Icons.edit)),
+                              GestureDetector(
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (_) => BlocProvider<CountryBloc>.value(
+                                        value: BlocProvider.of<CountryBloc>(context),
+                                        child: AlertDialog(
+                                          title: const Text('Change City Id'),
+                                          content: TextFormField(controller: _controller),
+                                          actions: [
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                ElevatedButton(
+                                                  onPressed: () {
+                                                    context.read<CountryBloc>().add(
+                                                          CountryEvent.editCity(
+                                                            name: _controller.text,
+                                                            stateId: (stateDropdownvalue.value?.id ?? 0).toString(),
+                                                            cityId: (state.cityList[index].id ?? 0).toString(),
+                                                            countryId: (countryDropdownvalue.value?.id ?? 0).toString(),
+                                                          ),
+                                                        );
+                                                    Navigator.of(context, rootNavigator: true).pop();
+                                                  },
+                                                  child: const Text('Yes'),
+                                                ),
+                                                ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context, rootNavigator: true).pop();
+                                                  },
+                                                  child: const Text('No'),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: const Icon(Icons.edit)),
                               GestureDetector(onTap: () {}, child: const Icon(Icons.delete))
                             ],
                           );

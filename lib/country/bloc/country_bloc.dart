@@ -16,6 +16,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
     on<_LoadCountry>(_loadCategory);
     on<_LoadState>(_loadState);
     on<_LoadCity>(_loadCity);
+    on<_EditCity>(_editCity);
   }
   final ICountryRepository repository;
 
@@ -100,6 +101,44 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
             failure: null,
             isLoading: false,
             message: '',
+          );
+        },
+      ),
+    );
+  }
+
+  Future<void> _editCity(_EditCity event, Emitter<CountryState> emit) async {
+    emit(
+      state.copyWith(
+        isLoading: true,
+        failure: null,
+      ),
+    );
+
+    final failureOrCategory = await repository.editCity(
+      countryId: event.countryId,
+      name: event.name,
+      stateId: event.stateId,
+      cityId: event.cityId,
+    );
+    emit(
+      await failureOrCategory.fold(
+        (l) => state.copyWith(
+          isLoading: false,
+          failure: l,
+          message: l.message,
+        ),
+        (r) async {
+          return state.copyWith(
+            cityList: state.cityList.map((e) {
+              if (e.id.toString() == event.cityId) {
+                return e.copyWith(name: event.name);
+              }
+              return e;
+            }).toList(),
+            failure: null,
+            isLoading: false,
+            message: 'City Edit Sucess',
           );
         },
       ),

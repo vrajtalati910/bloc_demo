@@ -43,12 +43,7 @@ class CountryRepository extends ICountryRepository {
   Future<Either<HttpFailure, CountryListReponce>> loadState({
     required String id,
   }) async {
-    final response = await client.getPublic(
-      url: AppString.apiState,
-      params: {
-        'country_id': id
-      }
-    );
+    final response = await client.getPublic(url: AppString.apiState, params: {'country_id': id});
 
     return response.fold(left, (r) {
       try {
@@ -69,15 +64,38 @@ class CountryRepository extends ICountryRepository {
   }
 
   @override
-  Future<Either<HttpFailure, CountryListReponce>> loadCity({required String countryId,required String stateId}) async {
-    final response = await client.getPublic(
-      url: AppString.cityAPI,
-      params: {
-        'country_id': countryId,
-        'state_id': stateId,
+  Future<Either<HttpFailure, CountryListReponce>> loadCity({required String countryId, required String stateId}) async {
+    final response = await client.getPublic(url: AppString.cityAPI, params: {
+      'country_id': countryId,
+      'state_id': stateId,
+    });
 
+    return response.fold(left, (r) {
+      try {
+        final data = CountryListReponce.fromJson(r);
+        if (data.status == '1') {
+          return right(data);
+        }
+        return left(
+          HttpFailure.parsing(
+            data.message ?? '',
+            int.parse(data.status ?? '0'),
+          ),
+        );
+      } catch (e) {
+        return left(const HttpFailure.parsing());
       }
-    );
+    });
+  }
+
+  @override
+  Future<Either<HttpFailure, CountryListReponce>> editCity(
+      {required String cityId, required String countryId, required String stateId, required String name}) async {
+    final response = await client.post(url: AppString.cityEditAPI(cityId), params: {
+      'country_id': countryId,
+      'state_id': stateId,
+      'name': name,
+    });
 
     return response.fold(left, (r) {
       try {
