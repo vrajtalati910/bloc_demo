@@ -15,5 +15,7 @@ abstract class ICountryRepository {
   Future<Either<HttpFailure, CountryListReponce>> loadCity({required String countryId, required String stateId});
   Future<Either<HttpFailure, CountryListReponce>> editCity(
       {required String cityId, required String countryId, required String stateId, required String name});
+  Future<Either<HttpFailure, CountryListReponce>> createCity(
+      {required String countryId, required String stateId, required String name});
   Future<Either<HttpFailure, CountryListReponce>> deleteCity({required String id});
 }
