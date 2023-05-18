@@ -1,3 +1,4 @@
+import 'package:bloc_demo/country/responce/city_list_responce.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../network/client.dart';
@@ -15,7 +16,7 @@ abstract class ICountryRepository {
   Future<Either<HttpFailure, CountryListReponce>> loadCity({required String countryId, required String stateId});
   Future<Either<HttpFailure, CountryListReponce>> editCity(
       {required String cityId, required String countryId, required String stateId, required String name});
-  Future<Either<HttpFailure, CountryListReponce>> createCity(
+  Future<Either<HttpFailure, CityAddReponce>> createCity(
       {required String countryId, required String stateId, required String name});
   Future<Either<HttpFailure, CountryListReponce>> deleteCity({required String id});
 }

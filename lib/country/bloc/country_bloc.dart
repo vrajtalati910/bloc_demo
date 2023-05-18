@@ -197,7 +197,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
         ),
         (r) async {
           return state.copyWith(
-            cityList: state.cityList..add(CountryModel(id: (state.cityList.length + 1), name: event.name)),
+            cityList: [...state.cityList, CountryModel(id: r.data?.id, name: r.data?.name)],
             failure: null,
             isLoading: false,
             message: 'City Added Sucess',

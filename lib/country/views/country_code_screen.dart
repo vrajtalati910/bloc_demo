@@ -30,9 +30,10 @@ class _CountryScreenState extends State<CountryScreen> {
         return BlocBuilder<CountryBloc, CountryState>(
           builder: (context, state) {
             if (state.isLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return const Scaffold(body: Center(child: CircularProgressIndicator()));
             }
             return Scaffold(
+                backgroundColor: Colors.white,
                 appBar: AppBar(
                   title: const Text("Country"),
                 ),

@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:bloc_demo/country/responce/city_list_responce.dart';
 import 'package:bloc_demo/utlityu/app_string.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -138,7 +139,7 @@ class CountryRepository extends ICountryRepository {
   }
 
   @override
-  Future<Either<HttpFailure, CountryListReponce>> createCity(
+  Future<Either<HttpFailure, CityAddReponce>> createCity(
       {required String countryId, required String stateId, required String name}) async {
     final response = await client.post(url: AppString.cityCreateAPI, params: {
       'country_id': countryId,
@@ -148,7 +149,7 @@ class CountryRepository extends ICountryRepository {
 
     return response.fold(left, (r) {
       try {
-        final data = CountryListReponce.fromJson(r);
+        final data = CityAddReponce.fromJson(r);
         if (data.status == '1') {
           return right(data);
         }
