@@ -12,7 +12,7 @@ part of 'city_list_responce.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CityAddReponce _$CityAddReponceFromJson(Map<String, dynamic> json) {
   return _CityAddReponce.fromJson(json);
@@ -92,11 +92,11 @@ class _$CityAddReponceCopyWithImpl<$Res, $Val extends CityAddReponce>
 }
 
 /// @nodoc
-abstract class _$$_CityAddReponceCopyWith<$Res>
+abstract class _$$CityAddReponceImplCopyWith<$Res>
     implements $CityAddReponceCopyWith<$Res> {
-  factory _$$_CityAddReponceCopyWith(
-          _$_CityAddReponce value, $Res Function(_$_CityAddReponce) then) =
-      __$$_CityAddReponceCopyWithImpl<$Res>;
+  factory _$$CityAddReponceImplCopyWith(_$CityAddReponceImpl value,
+          $Res Function(_$CityAddReponceImpl) then) =
+      __$$CityAddReponceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,11 +109,11 @@ abstract class _$$_CityAddReponceCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CityAddReponceCopyWithImpl<$Res>
-    extends _$CityAddReponceCopyWithImpl<$Res, _$_CityAddReponce>
-    implements _$$_CityAddReponceCopyWith<$Res> {
-  __$$_CityAddReponceCopyWithImpl(
-      _$_CityAddReponce _value, $Res Function(_$_CityAddReponce) _then)
+class __$$CityAddReponceImplCopyWithImpl<$Res>
+    extends _$CityAddReponceCopyWithImpl<$Res, _$CityAddReponceImpl>
+    implements _$$CityAddReponceImplCopyWith<$Res> {
+  __$$CityAddReponceImplCopyWithImpl(
+      _$CityAddReponceImpl _value, $Res Function(_$CityAddReponceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$_CityAddReponceCopyWithImpl<$Res>
     Object? status = freezed,
     Object? message = freezed,
   }) {
-    return _then(_$_CityAddReponce(
+    return _then(_$CityAddReponceImpl(
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -142,13 +142,13 @@ class __$$_CityAddReponceCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CityAddReponce extends _CityAddReponce {
-  const _$_CityAddReponce(
+class _$CityAddReponceImpl extends _CityAddReponce {
+  const _$CityAddReponceImpl(
       {@JsonKey(name: 'data') this.data, this.status, this.message})
       : super._();
 
-  factory _$_CityAddReponce.fromJson(Map<String, dynamic> json) =>
-      _$$_CityAddReponceFromJson(json);
+  factory _$CityAddReponceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CityAddReponceImplFromJson(json);
 
   @override
   @JsonKey(name: 'data')
@@ -164,10 +164,10 @@ class _$_CityAddReponce extends _CityAddReponce {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CityAddReponce &&
+            other is _$CityAddReponceImpl &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message));
@@ -180,12 +180,13 @@ class _$_CityAddReponce extends _CityAddReponce {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CityAddReponceCopyWith<_$_CityAddReponce> get copyWith =>
-      __$$_CityAddReponceCopyWithImpl<_$_CityAddReponce>(this, _$identity);
+  _$$CityAddReponceImplCopyWith<_$CityAddReponceImpl> get copyWith =>
+      __$$CityAddReponceImplCopyWithImpl<_$CityAddReponceImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CityAddReponceToJson(
+    return _$$CityAddReponceImplToJson(
       this,
     );
   }
@@ -195,11 +196,11 @@ abstract class _CityAddReponce extends CityAddReponce {
   const factory _CityAddReponce(
       {@JsonKey(name: 'data') final CityModel? data,
       final String? status,
-      final String? message}) = _$_CityAddReponce;
+      final String? message}) = _$CityAddReponceImpl;
   const _CityAddReponce._() : super._();
 
   factory _CityAddReponce.fromJson(Map<String, dynamic> json) =
-      _$_CityAddReponce.fromJson;
+      _$CityAddReponceImpl.fromJson;
 
   @override
   @JsonKey(name: 'data')
@@ -210,6 +211,6 @@ abstract class _CityAddReponce extends CityAddReponce {
   String? get message;
   @override
   @JsonKey(ignore: true)
-  _$$_CityAddReponceCopyWith<_$_CityAddReponce> get copyWith =>
+  _$$CityAddReponceImplCopyWith<_$CityAddReponceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

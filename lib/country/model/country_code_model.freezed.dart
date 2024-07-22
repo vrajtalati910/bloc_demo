@@ -12,7 +12,7 @@ part of 'country_code_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CountryModel _$CountryModelFromJson(Map<String, dynamic> json) {
   return _CountryModel.fromJson(json);
@@ -71,11 +71,11 @@ class _$CountryModelCopyWithImpl<$Res, $Val extends CountryModel>
 }
 
 /// @nodoc
-abstract class _$$_CountryModelCopyWith<$Res>
+abstract class _$$CountryModelImplCopyWith<$Res>
     implements $CountryModelCopyWith<$Res> {
-  factory _$$_CountryModelCopyWith(
-          _$_CountryModel value, $Res Function(_$_CountryModel) then) =
-      __$$_CountryModelCopyWithImpl<$Res>;
+  factory _$$CountryModelImplCopyWith(
+          _$CountryModelImpl value, $Res Function(_$CountryModelImpl) then) =
+      __$$CountryModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -83,11 +83,11 @@ abstract class _$$_CountryModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CountryModelCopyWithImpl<$Res>
-    extends _$CountryModelCopyWithImpl<$Res, _$_CountryModel>
-    implements _$$_CountryModelCopyWith<$Res> {
-  __$$_CountryModelCopyWithImpl(
-      _$_CountryModel _value, $Res Function(_$_CountryModel) _then)
+class __$$CountryModelImplCopyWithImpl<$Res>
+    extends _$CountryModelCopyWithImpl<$Res, _$CountryModelImpl>
+    implements _$$CountryModelImplCopyWith<$Res> {
+  __$$CountryModelImplCopyWithImpl(
+      _$CountryModelImpl _value, $Res Function(_$CountryModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +96,7 @@ class __$$_CountryModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
   }) {
-    return _then(_$_CountryModel(
+    return _then(_$CountryModelImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -111,13 +111,13 @@ class __$$_CountryModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CountryModel extends _CountryModel {
-  const _$_CountryModel(
+class _$CountryModelImpl extends _CountryModel {
+  const _$CountryModelImpl(
       {@JsonKey(name: 'id') this.id, @JsonKey(name: 'name') this.name})
       : super._();
 
-  factory _$_CountryModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CountryModelFromJson(json);
+  factory _$CountryModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CountryModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -132,10 +132,10 @@ class _$_CountryModel extends _CountryModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CountryModel &&
+            other is _$CountryModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -147,12 +147,12 @@ class _$_CountryModel extends _CountryModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CountryModelCopyWith<_$_CountryModel> get copyWith =>
-      __$$_CountryModelCopyWithImpl<_$_CountryModel>(this, _$identity);
+  _$$CountryModelImplCopyWith<_$CountryModelImpl> get copyWith =>
+      __$$CountryModelImplCopyWithImpl<_$CountryModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CountryModelToJson(
+    return _$$CountryModelImplToJson(
       this,
     );
   }
@@ -161,11 +161,11 @@ class _$_CountryModel extends _CountryModel {
 abstract class _CountryModel extends CountryModel {
   const factory _CountryModel(
       {@JsonKey(name: 'id') final int? id,
-      @JsonKey(name: 'name') final String? name}) = _$_CountryModel;
+      @JsonKey(name: 'name') final String? name}) = _$CountryModelImpl;
   const _CountryModel._() : super._();
 
   factory _CountryModel.fromJson(Map<String, dynamic> json) =
-      _$_CountryModel.fromJson;
+      _$CountryModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -175,6 +175,6 @@ abstract class _CountryModel extends CountryModel {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_CountryModelCopyWith<_$_CountryModel> get copyWith =>
+  _$$CountryModelImplCopyWith<_$CountryModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

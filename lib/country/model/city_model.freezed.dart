@@ -12,7 +12,7 @@ part of 'city_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CityModel _$CityModelFromJson(Map<String, dynamic> json) {
   return _CityModel.fromJson(json);
@@ -70,10 +70,11 @@ class _$CityModelCopyWithImpl<$Res, $Val extends CityModel>
 }
 
 /// @nodoc
-abstract class _$$_CityModelCopyWith<$Res> implements $CityModelCopyWith<$Res> {
-  factory _$$_CityModelCopyWith(
-          _$_CityModel value, $Res Function(_$_CityModel) then) =
-      __$$_CityModelCopyWithImpl<$Res>;
+abstract class _$$CityModelImplCopyWith<$Res>
+    implements $CityModelCopyWith<$Res> {
+  factory _$$CityModelImplCopyWith(
+          _$CityModelImpl value, $Res Function(_$CityModelImpl) then) =
+      __$$CityModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -81,11 +82,11 @@ abstract class _$$_CityModelCopyWith<$Res> implements $CityModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CityModelCopyWithImpl<$Res>
-    extends _$CityModelCopyWithImpl<$Res, _$_CityModel>
-    implements _$$_CityModelCopyWith<$Res> {
-  __$$_CityModelCopyWithImpl(
-      _$_CityModel _value, $Res Function(_$_CityModel) _then)
+class __$$CityModelImplCopyWithImpl<$Res>
+    extends _$CityModelCopyWithImpl<$Res, _$CityModelImpl>
+    implements _$$CityModelImplCopyWith<$Res> {
+  __$$CityModelImplCopyWithImpl(
+      _$CityModelImpl _value, $Res Function(_$CityModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +95,7 @@ class __$$_CityModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
   }) {
-    return _then(_$_CityModel(
+    return _then(_$CityModelImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -109,13 +110,13 @@ class __$$_CityModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CityModel extends _CityModel {
-  const _$_CityModel(
+class _$CityModelImpl extends _CityModel {
+  const _$CityModelImpl(
       {@JsonKey(name: 'id') this.id, @JsonKey(name: 'name') this.name})
       : super._();
 
-  factory _$_CityModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CityModelFromJson(json);
+  factory _$CityModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CityModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -130,10 +131,10 @@ class _$_CityModel extends _CityModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CityModel &&
+            other is _$CityModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -145,12 +146,12 @@ class _$_CityModel extends _CityModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CityModelCopyWith<_$_CityModel> get copyWith =>
-      __$$_CityModelCopyWithImpl<_$_CityModel>(this, _$identity);
+  _$$CityModelImplCopyWith<_$CityModelImpl> get copyWith =>
+      __$$CityModelImplCopyWithImpl<_$CityModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CityModelToJson(
+    return _$$CityModelImplToJson(
       this,
     );
   }
@@ -159,11 +160,11 @@ class _$_CityModel extends _CityModel {
 abstract class _CityModel extends CityModel {
   const factory _CityModel(
       {@JsonKey(name: 'id') final int? id,
-      @JsonKey(name: 'name') final String? name}) = _$_CityModel;
+      @JsonKey(name: 'name') final String? name}) = _$CityModelImpl;
   const _CityModel._() : super._();
 
   factory _CityModel.fromJson(Map<String, dynamic> json) =
-      _$_CityModel.fromJson;
+      _$CityModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -173,6 +174,6 @@ abstract class _CityModel extends CityModel {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_CityModelCopyWith<_$_CityModel> get copyWith =>
+  _$$CityModelImplCopyWith<_$CityModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,8 +12,8 @@ part 'country_state.dart';
 
 @injectable
 class CountryBloc extends Bloc<CountryEvent, CountryState> {
-  CountryBloc({required this.repository}) : super(const CountryState()) {
-    on<_LoadCountry>(_loadCategory);
+  CountryBloc({required this.repository}) : super(CountryState()) {
+    on<_LoadCountry>(_loadCountry);
     on<_LoadState>(_loadState);
     on<_LoadCity>(_loadCity);
     on<_EditCity>(_editCity);
@@ -22,10 +22,10 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
   }
   final ICountryRepository repository;
 
-  Future<void> _loadCategory(_LoadCountry event, Emitter<CountryState> emit) async {
+  Future<void> _loadCountry(_LoadCountry event, Emitter<CountryState> emit) async {
     emit(
       state.copyWith(
-        isLoading: true,
+        isCountryLoading: true,
         failure: null,
         countyList: [],
       ),
@@ -35,7 +35,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
     emit(
       await failureOrCategory.fold(
         (l) => state.copyWith(
-          isLoading: false,
+          isCountryLoading: false,
           failure: l,
           message: l.message,
         ),
@@ -43,7 +43,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
           return state.copyWith(
             countyList: r.data,
             failure: null,
-            isLoading: false,
+            isCountryLoading: false,
             message: '',
           );
         },
@@ -54,17 +54,18 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
   Future<void> _loadState(_LoadState event, Emitter<CountryState> emit) async {
     emit(
       state.copyWith(
-        isLoading: true,
+        isStateLoading: true,
         failure: null,
         stateList: [],
+        countrySelected: event.countryModel,
       ),
     );
 
-    final failureOrCategory = await repository.loadState(id: event.id);
+    final failureOrCategory = await repository.loadState(id: event.countryModel.id.toString());
     emit(
       await failureOrCategory.fold(
         (l) => state.copyWith(
-          isLoading: false,
+          isStateLoading: false,
           failure: l,
           message: l.message,
         ),
@@ -72,7 +73,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
           return state.copyWith(
             stateList: r.data,
             failure: null,
-            isLoading: false,
+            isStateLoading: false,
             message: '',
           );
         },
@@ -83,17 +84,19 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
   Future<void> _loadCity(_LoadCity event, Emitter<CountryState> emit) async {
     emit(
       state.copyWith(
-        isLoading: true,
+        isCityLoading: true,
         failure: null,
         cityList: [],
+        stateDropdownvalue: event.stateModel,
       ),
     );
 
-    final failureOrCategory = await repository.loadCity(countryId: event.countryId, stateId: event.stateId);
+    final failureOrCategory = await repository.loadCity(
+        countryId: state.countrySelected!.id.toString(), stateId: state.stateDropdownvalue!.id.toString());
     emit(
       await failureOrCategory.fold(
         (l) => state.copyWith(
-          isLoading: false,
+          isCityLoading: false,
           failure: l,
           message: l.message,
         ),
@@ -101,7 +104,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
           return state.copyWith(
             cityList: r.data,
             failure: null,
-            isLoading: false,
+            isCityLoading: false,
             message: '',
           );
         },
@@ -112,21 +115,21 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
   Future<void> _editCity(_EditCity event, Emitter<CountryState> emit) async {
     emit(
       state.copyWith(
-        isLoading: true,
+        isCityLoading: true,
         failure: null,
       ),
     );
 
     final failureOrCategory = await repository.editCity(
-      countryId: event.countryId,
+      countryId: state.countrySelected!.id.toString(),
       name: event.name,
-      stateId: event.stateId,
+      stateId: state.stateDropdownvalue!.id.toString(),
       cityId: event.cityId,
     );
     emit(
       await failureOrCategory.fold(
         (l) => state.copyWith(
-          isLoading: false,
+          isCityLoading: false,
           failure: l,
           message: l.message,
         ),
@@ -139,7 +142,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
               return e;
             }).toList(),
             failure: null,
-            isLoading: false,
+            isCityLoading: false,
             message: 'City Edit Sucess',
           );
         },
@@ -150,7 +153,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
   Future<void> _deleteCity(_DeleteCity event, Emitter<CountryState> emit) async {
     emit(
       state.copyWith(
-        isLoading: true,
+        isCityLoading: true,
         failure: null,
       ),
     );
@@ -159,7 +162,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
     emit(
       await failureOrCategory.fold(
         (l) => state.copyWith(
-          isLoading: false,
+          isCityLoading: false,
           failure: l,
           message: l.message,
         ),
@@ -167,7 +170,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
           return state.copyWith(
             cityList: [...state.cityList]..removeWhere((element) => element.id.toString() == event.id),
             failure: null,
-            isLoading: false,
+            isCityLoading: false,
             message: '',
           );
         },
@@ -178,20 +181,20 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
   Future<void> _createCity(_CreateCity event, Emitter<CountryState> emit) async {
     emit(
       state.copyWith(
-        isLoading: true,
+        isCityLoading: true,
         failure: null,
       ),
     );
 
     final failureOrCategory = await repository.createCity(
-      countryId: event.countryId,
+      countryId: (state.countrySelected?.id ?? 0).toString(),
       name: event.name,
-      stateId: event.stateId,
+      stateId: (state.stateDropdownvalue?.id ?? 0).toString(),
     );
     emit(
       await failureOrCategory.fold(
         (l) => state.copyWith(
-          isLoading: false,
+          isCityLoading: false,
           failure: l,
           message: l.message,
         ),
@@ -199,7 +202,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
           return state.copyWith(
             cityList: [...state.cityList, CountryModel(id: r.data?.id, name: r.data?.name)],
             failure: null,
-            isLoading: false,
+            isCityLoading: false,
             message: 'City Added Sucess',
           );
         },

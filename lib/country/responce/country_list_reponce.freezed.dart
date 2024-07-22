@@ -12,7 +12,7 @@ part of 'country_list_reponce.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CountryListReponce _$CountryListReponceFromJson(Map<String, dynamic> json) {
   return _CountryListReponce.fromJson(json);
@@ -78,11 +78,11 @@ class _$CountryListReponceCopyWithImpl<$Res, $Val extends CountryListReponce>
 }
 
 /// @nodoc
-abstract class _$$_CountryListReponceCopyWith<$Res>
+abstract class _$$CountryListReponceImplCopyWith<$Res>
     implements $CountryListReponceCopyWith<$Res> {
-  factory _$$_CountryListReponceCopyWith(_$_CountryListReponce value,
-          $Res Function(_$_CountryListReponce) then) =
-      __$$_CountryListReponceCopyWithImpl<$Res>;
+  factory _$$CountryListReponceImplCopyWith(_$CountryListReponceImpl value,
+          $Res Function(_$CountryListReponceImpl) then) =
+      __$$CountryListReponceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -92,11 +92,11 @@ abstract class _$$_CountryListReponceCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CountryListReponceCopyWithImpl<$Res>
-    extends _$CountryListReponceCopyWithImpl<$Res, _$_CountryListReponce>
-    implements _$$_CountryListReponceCopyWith<$Res> {
-  __$$_CountryListReponceCopyWithImpl(
-      _$_CountryListReponce _value, $Res Function(_$_CountryListReponce) _then)
+class __$$CountryListReponceImplCopyWithImpl<$Res>
+    extends _$CountryListReponceCopyWithImpl<$Res, _$CountryListReponceImpl>
+    implements _$$CountryListReponceImplCopyWith<$Res> {
+  __$$CountryListReponceImplCopyWithImpl(_$CountryListReponceImpl _value,
+      $Res Function(_$CountryListReponceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,7 +106,7 @@ class __$$_CountryListReponceCopyWithImpl<$Res>
     Object? status = freezed,
     Object? message = freezed,
   }) {
-    return _then(_$_CountryListReponce(
+    return _then(_$CountryListReponceImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -125,16 +125,16 @@ class __$$_CountryListReponceCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CountryListReponce extends _CountryListReponce {
-  const _$_CountryListReponce(
+class _$CountryListReponceImpl extends _CountryListReponce {
+  const _$CountryListReponceImpl(
       {@JsonKey(name: 'data') final List<CountryModel> data = const [],
       this.status,
       this.message})
       : _data = data,
         super._();
 
-  factory _$_CountryListReponce.fromJson(Map<String, dynamic> json) =>
-      _$$_CountryListReponceFromJson(json);
+  factory _$CountryListReponceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CountryListReponceImplFromJson(json);
 
   final List<CountryModel> _data;
   @override
@@ -156,10 +156,10 @@ class _$_CountryListReponce extends _CountryListReponce {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CountryListReponce &&
+            other is _$CountryListReponceImpl &&
             const DeepCollectionEquality().equals(other._data, _data) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message));
@@ -173,13 +173,13 @@ class _$_CountryListReponce extends _CountryListReponce {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CountryListReponceCopyWith<_$_CountryListReponce> get copyWith =>
-      __$$_CountryListReponceCopyWithImpl<_$_CountryListReponce>(
+  _$$CountryListReponceImplCopyWith<_$CountryListReponceImpl> get copyWith =>
+      __$$CountryListReponceImplCopyWithImpl<_$CountryListReponceImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CountryListReponceToJson(
+    return _$$CountryListReponceImplToJson(
       this,
     );
   }
@@ -189,11 +189,11 @@ abstract class _CountryListReponce extends CountryListReponce {
   const factory _CountryListReponce(
       {@JsonKey(name: 'data') final List<CountryModel> data,
       final String? status,
-      final String? message}) = _$_CountryListReponce;
+      final String? message}) = _$CountryListReponceImpl;
   const _CountryListReponce._() : super._();
 
   factory _CountryListReponce.fromJson(Map<String, dynamic> json) =
-      _$_CountryListReponce.fromJson;
+      _$CountryListReponceImpl.fromJson;
 
   @override
   @JsonKey(name: 'data')
@@ -204,6 +204,6 @@ abstract class _CountryListReponce extends CountryListReponce {
   String? get message;
   @override
   @JsonKey(ignore: true)
-  _$$_CountryListReponceCopyWith<_$_CountryListReponce> get copyWith =>
+  _$$CountryListReponceImplCopyWith<_$CountryListReponceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

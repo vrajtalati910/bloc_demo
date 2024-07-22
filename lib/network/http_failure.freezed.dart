@@ -12,7 +12,7 @@ part of 'http_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$HttpFailure {
@@ -147,22 +147,22 @@ class _$HttpFailureCopyWithImpl<$Res, $Val extends HttpFailure>
 }
 
 /// @nodoc
-abstract class _$$HttpFailureFetchDataCopyWith<$Res>
+abstract class _$$HttpFailureFetchDataImplCopyWith<$Res>
     implements $HttpFailureCopyWith<$Res> {
-  factory _$$HttpFailureFetchDataCopyWith(_$HttpFailureFetchData value,
-          $Res Function(_$HttpFailureFetchData) then) =
-      __$$HttpFailureFetchDataCopyWithImpl<$Res>;
+  factory _$$HttpFailureFetchDataImplCopyWith(_$HttpFailureFetchDataImpl value,
+          $Res Function(_$HttpFailureFetchDataImpl) then) =
+      __$$HttpFailureFetchDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, int status});
 }
 
 /// @nodoc
-class __$$HttpFailureFetchDataCopyWithImpl<$Res>
-    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureFetchData>
-    implements _$$HttpFailureFetchDataCopyWith<$Res> {
-  __$$HttpFailureFetchDataCopyWithImpl(_$HttpFailureFetchData _value,
-      $Res Function(_$HttpFailureFetchData) _then)
+class __$$HttpFailureFetchDataImplCopyWithImpl<$Res>
+    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureFetchDataImpl>
+    implements _$$HttpFailureFetchDataImplCopyWith<$Res> {
+  __$$HttpFailureFetchDataImplCopyWithImpl(_$HttpFailureFetchDataImpl _value,
+      $Res Function(_$HttpFailureFetchDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -171,7 +171,7 @@ class __$$HttpFailureFetchDataCopyWithImpl<$Res>
     Object? message = null,
     Object? status = null,
   }) {
-    return _then(_$HttpFailureFetchData(
+    return _then(_$HttpFailureFetchDataImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -186,8 +186,8 @@ class __$$HttpFailureFetchDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HttpFailureFetchData implements HttpFailureFetchData {
-  const _$HttpFailureFetchData(this.message, this.status);
+class _$HttpFailureFetchDataImpl implements HttpFailureFetchData {
+  const _$HttpFailureFetchDataImpl(this.message, this.status);
 
   @override
   final String message;
@@ -200,10 +200,10 @@ class _$HttpFailureFetchData implements HttpFailureFetchData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HttpFailureFetchData &&
+            other is _$HttpFailureFetchDataImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.status, status) || other.status == status));
   }
@@ -214,9 +214,10 @@ class _$HttpFailureFetchData implements HttpFailureFetchData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HttpFailureFetchDataCopyWith<_$HttpFailureFetchData> get copyWith =>
-      __$$HttpFailureFetchDataCopyWithImpl<_$HttpFailureFetchData>(
-          this, _$identity);
+  _$$HttpFailureFetchDataImplCopyWith<_$HttpFailureFetchDataImpl>
+      get copyWith =>
+          __$$HttpFailureFetchDataImplCopyWithImpl<_$HttpFailureFetchDataImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -329,7 +330,7 @@ class _$HttpFailureFetchData implements HttpFailureFetchData {
 
 abstract class HttpFailureFetchData implements HttpFailure {
   const factory HttpFailureFetchData(final String message, final int status) =
-      _$HttpFailureFetchData;
+      _$HttpFailureFetchDataImpl;
 
   @override
   String get message;
@@ -337,29 +338,30 @@ abstract class HttpFailureFetchData implements HttpFailure {
   int get status;
   @override
   @JsonKey(ignore: true)
-  _$$HttpFailureFetchDataCopyWith<_$HttpFailureFetchData> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$HttpFailureFetchDataImplCopyWith<_$HttpFailureFetchDataImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$HttpFailureInsufficientPermissionCopyWith<$Res>
+abstract class _$$HttpFailureInsufficientPermissionImplCopyWith<$Res>
     implements $HttpFailureCopyWith<$Res> {
-  factory _$$HttpFailureInsufficientPermissionCopyWith(
-          _$HttpFailureInsufficientPermission value,
-          $Res Function(_$HttpFailureInsufficientPermission) then) =
-      __$$HttpFailureInsufficientPermissionCopyWithImpl<$Res>;
+  factory _$$HttpFailureInsufficientPermissionImplCopyWith(
+          _$HttpFailureInsufficientPermissionImpl value,
+          $Res Function(_$HttpFailureInsufficientPermissionImpl) then) =
+      __$$HttpFailureInsufficientPermissionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, int status});
 }
 
 /// @nodoc
-class __$$HttpFailureInsufficientPermissionCopyWithImpl<$Res>
-    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureInsufficientPermission>
-    implements _$$HttpFailureInsufficientPermissionCopyWith<$Res> {
-  __$$HttpFailureInsufficientPermissionCopyWithImpl(
-      _$HttpFailureInsufficientPermission _value,
-      $Res Function(_$HttpFailureInsufficientPermission) _then)
+class __$$HttpFailureInsufficientPermissionImplCopyWithImpl<$Res>
+    extends _$HttpFailureCopyWithImpl<$Res,
+        _$HttpFailureInsufficientPermissionImpl>
+    implements _$$HttpFailureInsufficientPermissionImplCopyWith<$Res> {
+  __$$HttpFailureInsufficientPermissionImplCopyWithImpl(
+      _$HttpFailureInsufficientPermissionImpl _value,
+      $Res Function(_$HttpFailureInsufficientPermissionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -368,7 +370,7 @@ class __$$HttpFailureInsufficientPermissionCopyWithImpl<$Res>
     Object? message = null,
     Object? status = null,
   }) {
-    return _then(_$HttpFailureInsufficientPermission(
+    return _then(_$HttpFailureInsufficientPermissionImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -383,9 +385,9 @@ class __$$HttpFailureInsufficientPermissionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HttpFailureInsufficientPermission
+class _$HttpFailureInsufficientPermissionImpl
     implements HttpFailureInsufficientPermission {
-  const _$HttpFailureInsufficientPermission(
+  const _$HttpFailureInsufficientPermissionImpl(
       [this.message = 'Insufficient Permission', this.status = 500]);
 
   @override
@@ -401,10 +403,10 @@ class _$HttpFailureInsufficientPermission
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HttpFailureInsufficientPermission &&
+            other is _$HttpFailureInsufficientPermissionImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.status, status) || other.status == status));
   }
@@ -415,10 +417,10 @@ class _$HttpFailureInsufficientPermission
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HttpFailureInsufficientPermissionCopyWith<
-          _$HttpFailureInsufficientPermission>
-      get copyWith => __$$HttpFailureInsufficientPermissionCopyWithImpl<
-          _$HttpFailureInsufficientPermission>(this, _$identity);
+  _$$HttpFailureInsufficientPermissionImplCopyWith<
+          _$HttpFailureInsufficientPermissionImpl>
+      get copyWith => __$$HttpFailureInsufficientPermissionImplCopyWithImpl<
+          _$HttpFailureInsufficientPermissionImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -532,7 +534,7 @@ class _$HttpFailureInsufficientPermission
 abstract class HttpFailureInsufficientPermission implements HttpFailure {
   const factory HttpFailureInsufficientPermission(
       [final String message,
-      final int status]) = _$HttpFailureInsufficientPermission;
+      final int status]) = _$HttpFailureInsufficientPermissionImpl;
 
   @override
   String get message;
@@ -540,28 +542,30 @@ abstract class HttpFailureInsufficientPermission implements HttpFailure {
   int get status;
   @override
   @JsonKey(ignore: true)
-  _$$HttpFailureInsufficientPermissionCopyWith<
-          _$HttpFailureInsufficientPermission>
+  _$$HttpFailureInsufficientPermissionImplCopyWith<
+          _$HttpFailureInsufficientPermissionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$HttpFailureServerErrorCopyWith<$Res>
+abstract class _$$HttpFailureServerErrorImplCopyWith<$Res>
     implements $HttpFailureCopyWith<$Res> {
-  factory _$$HttpFailureServerErrorCopyWith(_$HttpFailureServerError value,
-          $Res Function(_$HttpFailureServerError) then) =
-      __$$HttpFailureServerErrorCopyWithImpl<$Res>;
+  factory _$$HttpFailureServerErrorImplCopyWith(
+          _$HttpFailureServerErrorImpl value,
+          $Res Function(_$HttpFailureServerErrorImpl) then) =
+      __$$HttpFailureServerErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, int status});
 }
 
 /// @nodoc
-class __$$HttpFailureServerErrorCopyWithImpl<$Res>
-    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureServerError>
-    implements _$$HttpFailureServerErrorCopyWith<$Res> {
-  __$$HttpFailureServerErrorCopyWithImpl(_$HttpFailureServerError _value,
-      $Res Function(_$HttpFailureServerError) _then)
+class __$$HttpFailureServerErrorImplCopyWithImpl<$Res>
+    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureServerErrorImpl>
+    implements _$$HttpFailureServerErrorImplCopyWith<$Res> {
+  __$$HttpFailureServerErrorImplCopyWithImpl(
+      _$HttpFailureServerErrorImpl _value,
+      $Res Function(_$HttpFailureServerErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -570,7 +574,7 @@ class __$$HttpFailureServerErrorCopyWithImpl<$Res>
     Object? message = null,
     Object? status = null,
   }) {
-    return _then(_$HttpFailureServerError(
+    return _then(_$HttpFailureServerErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -585,8 +589,8 @@ class __$$HttpFailureServerErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HttpFailureServerError implements HttpFailureServerError {
-  const _$HttpFailureServerError(
+class _$HttpFailureServerErrorImpl implements HttpFailureServerError {
+  const _$HttpFailureServerErrorImpl(
       [this.message = 'Server Error', this.status = 500]);
 
   @override
@@ -602,10 +606,10 @@ class _$HttpFailureServerError implements HttpFailureServerError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HttpFailureServerError &&
+            other is _$HttpFailureServerErrorImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.status, status) || other.status == status));
   }
@@ -616,9 +620,9 @@ class _$HttpFailureServerError implements HttpFailureServerError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HttpFailureServerErrorCopyWith<_$HttpFailureServerError> get copyWith =>
-      __$$HttpFailureServerErrorCopyWithImpl<_$HttpFailureServerError>(
-          this, _$identity);
+  _$$HttpFailureServerErrorImplCopyWith<_$HttpFailureServerErrorImpl>
+      get copyWith => __$$HttpFailureServerErrorImplCopyWithImpl<
+          _$HttpFailureServerErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -731,7 +735,7 @@ class _$HttpFailureServerError implements HttpFailureServerError {
 
 abstract class HttpFailureServerError implements HttpFailure {
   const factory HttpFailureServerError(
-      [final String message, final int status]) = _$HttpFailureServerError;
+      [final String message, final int status]) = _$HttpFailureServerErrorImpl;
 
   @override
   String get message;
@@ -739,27 +743,29 @@ abstract class HttpFailureServerError implements HttpFailure {
   int get status;
   @override
   @JsonKey(ignore: true)
-  _$$HttpFailureServerErrorCopyWith<_$HttpFailureServerError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$HttpFailureServerErrorImplCopyWith<_$HttpFailureServerErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$HttpFailureParsingErrorCopyWith<$Res>
+abstract class _$$HttpFailureParsingErrorImplCopyWith<$Res>
     implements $HttpFailureCopyWith<$Res> {
-  factory _$$HttpFailureParsingErrorCopyWith(_$HttpFailureParsingError value,
-          $Res Function(_$HttpFailureParsingError) then) =
-      __$$HttpFailureParsingErrorCopyWithImpl<$Res>;
+  factory _$$HttpFailureParsingErrorImplCopyWith(
+          _$HttpFailureParsingErrorImpl value,
+          $Res Function(_$HttpFailureParsingErrorImpl) then) =
+      __$$HttpFailureParsingErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, int status});
 }
 
 /// @nodoc
-class __$$HttpFailureParsingErrorCopyWithImpl<$Res>
-    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureParsingError>
-    implements _$$HttpFailureParsingErrorCopyWith<$Res> {
-  __$$HttpFailureParsingErrorCopyWithImpl(_$HttpFailureParsingError _value,
-      $Res Function(_$HttpFailureParsingError) _then)
+class __$$HttpFailureParsingErrorImplCopyWithImpl<$Res>
+    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureParsingErrorImpl>
+    implements _$$HttpFailureParsingErrorImplCopyWith<$Res> {
+  __$$HttpFailureParsingErrorImplCopyWithImpl(
+      _$HttpFailureParsingErrorImpl _value,
+      $Res Function(_$HttpFailureParsingErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -768,7 +774,7 @@ class __$$HttpFailureParsingErrorCopyWithImpl<$Res>
     Object? message = null,
     Object? status = null,
   }) {
-    return _then(_$HttpFailureParsingError(
+    return _then(_$HttpFailureParsingErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -783,8 +789,8 @@ class __$$HttpFailureParsingErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HttpFailureParsingError implements HttpFailureParsingError {
-  const _$HttpFailureParsingError(
+class _$HttpFailureParsingErrorImpl implements HttpFailureParsingError {
+  const _$HttpFailureParsingErrorImpl(
       [this.message = 'Error Parsing Data', this.status = 500]);
 
   @override
@@ -800,10 +806,10 @@ class _$HttpFailureParsingError implements HttpFailureParsingError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HttpFailureParsingError &&
+            other is _$HttpFailureParsingErrorImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.status, status) || other.status == status));
   }
@@ -814,9 +820,9 @@ class _$HttpFailureParsingError implements HttpFailureParsingError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HttpFailureParsingErrorCopyWith<_$HttpFailureParsingError> get copyWith =>
-      __$$HttpFailureParsingErrorCopyWithImpl<_$HttpFailureParsingError>(
-          this, _$identity);
+  _$$HttpFailureParsingErrorImplCopyWith<_$HttpFailureParsingErrorImpl>
+      get copyWith => __$$HttpFailureParsingErrorImplCopyWithImpl<
+          _$HttpFailureParsingErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -929,7 +935,7 @@ class _$HttpFailureParsingError implements HttpFailureParsingError {
 
 abstract class HttpFailureParsingError implements HttpFailure {
   const factory HttpFailureParsingError(
-      [final String message, final int status]) = _$HttpFailureParsingError;
+      [final String message, final int status]) = _$HttpFailureParsingErrorImpl;
 
   @override
   String get message;
@@ -937,27 +943,28 @@ abstract class HttpFailureParsingError implements HttpFailure {
   int get status;
   @override
   @JsonKey(ignore: true)
-  _$$HttpFailureParsingErrorCopyWith<_$HttpFailureParsingError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$HttpFailureParsingErrorImplCopyWith<_$HttpFailureParsingErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$HttpFailureBadRequestCopyWith<$Res>
+abstract class _$$HttpFailureBadRequestImplCopyWith<$Res>
     implements $HttpFailureCopyWith<$Res> {
-  factory _$$HttpFailureBadRequestCopyWith(_$HttpFailureBadRequest value,
-          $Res Function(_$HttpFailureBadRequest) then) =
-      __$$HttpFailureBadRequestCopyWithImpl<$Res>;
+  factory _$$HttpFailureBadRequestImplCopyWith(
+          _$HttpFailureBadRequestImpl value,
+          $Res Function(_$HttpFailureBadRequestImpl) then) =
+      __$$HttpFailureBadRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, int status});
 }
 
 /// @nodoc
-class __$$HttpFailureBadRequestCopyWithImpl<$Res>
-    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureBadRequest>
-    implements _$$HttpFailureBadRequestCopyWith<$Res> {
-  __$$HttpFailureBadRequestCopyWithImpl(_$HttpFailureBadRequest _value,
-      $Res Function(_$HttpFailureBadRequest) _then)
+class __$$HttpFailureBadRequestImplCopyWithImpl<$Res>
+    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureBadRequestImpl>
+    implements _$$HttpFailureBadRequestImplCopyWith<$Res> {
+  __$$HttpFailureBadRequestImplCopyWithImpl(_$HttpFailureBadRequestImpl _value,
+      $Res Function(_$HttpFailureBadRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -966,7 +973,7 @@ class __$$HttpFailureBadRequestCopyWithImpl<$Res>
     Object? message = null,
     Object? status = null,
   }) {
-    return _then(_$HttpFailureBadRequest(
+    return _then(_$HttpFailureBadRequestImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -981,8 +988,8 @@ class __$$HttpFailureBadRequestCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HttpFailureBadRequest implements HttpFailureBadRequest {
-  const _$HttpFailureBadRequest(
+class _$HttpFailureBadRequestImpl implements HttpFailureBadRequest {
+  const _$HttpFailureBadRequestImpl(
       [this.message = 'Bad Request', this.status = 400]);
 
   @override
@@ -998,10 +1005,10 @@ class _$HttpFailureBadRequest implements HttpFailureBadRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HttpFailureBadRequest &&
+            other is _$HttpFailureBadRequestImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.status, status) || other.status == status));
   }
@@ -1012,9 +1019,9 @@ class _$HttpFailureBadRequest implements HttpFailureBadRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HttpFailureBadRequestCopyWith<_$HttpFailureBadRequest> get copyWith =>
-      __$$HttpFailureBadRequestCopyWithImpl<_$HttpFailureBadRequest>(
-          this, _$identity);
+  _$$HttpFailureBadRequestImplCopyWith<_$HttpFailureBadRequestImpl>
+      get copyWith => __$$HttpFailureBadRequestImplCopyWithImpl<
+          _$HttpFailureBadRequestImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1127,7 +1134,7 @@ class _$HttpFailureBadRequest implements HttpFailureBadRequest {
 
 abstract class HttpFailureBadRequest implements HttpFailure {
   const factory HttpFailureBadRequest(
-      [final String message, final int status]) = _$HttpFailureBadRequest;
+      [final String message, final int status]) = _$HttpFailureBadRequestImpl;
 
   @override
   String get message;
@@ -1135,27 +1142,29 @@ abstract class HttpFailureBadRequest implements HttpFailure {
   int get status;
   @override
   @JsonKey(ignore: true)
-  _$$HttpFailureBadRequestCopyWith<_$HttpFailureBadRequest> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$HttpFailureBadRequestImplCopyWith<_$HttpFailureBadRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$HttpFailureUnauthorizedCopyWith<$Res>
+abstract class _$$HttpFailureUnauthorizedImplCopyWith<$Res>
     implements $HttpFailureCopyWith<$Res> {
-  factory _$$HttpFailureUnauthorizedCopyWith(_$HttpFailureUnauthorized value,
-          $Res Function(_$HttpFailureUnauthorized) then) =
-      __$$HttpFailureUnauthorizedCopyWithImpl<$Res>;
+  factory _$$HttpFailureUnauthorizedImplCopyWith(
+          _$HttpFailureUnauthorizedImpl value,
+          $Res Function(_$HttpFailureUnauthorizedImpl) then) =
+      __$$HttpFailureUnauthorizedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, int status});
 }
 
 /// @nodoc
-class __$$HttpFailureUnauthorizedCopyWithImpl<$Res>
-    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureUnauthorized>
-    implements _$$HttpFailureUnauthorizedCopyWith<$Res> {
-  __$$HttpFailureUnauthorizedCopyWithImpl(_$HttpFailureUnauthorized _value,
-      $Res Function(_$HttpFailureUnauthorized) _then)
+class __$$HttpFailureUnauthorizedImplCopyWithImpl<$Res>
+    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureUnauthorizedImpl>
+    implements _$$HttpFailureUnauthorizedImplCopyWith<$Res> {
+  __$$HttpFailureUnauthorizedImplCopyWithImpl(
+      _$HttpFailureUnauthorizedImpl _value,
+      $Res Function(_$HttpFailureUnauthorizedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1164,7 +1173,7 @@ class __$$HttpFailureUnauthorizedCopyWithImpl<$Res>
     Object? message = null,
     Object? status = null,
   }) {
-    return _then(_$HttpFailureUnauthorized(
+    return _then(_$HttpFailureUnauthorizedImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1179,8 +1188,8 @@ class __$$HttpFailureUnauthorizedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HttpFailureUnauthorized implements HttpFailureUnauthorized {
-  const _$HttpFailureUnauthorized(
+class _$HttpFailureUnauthorizedImpl implements HttpFailureUnauthorized {
+  const _$HttpFailureUnauthorizedImpl(
       [this.message = 'Unauthorized', this.status = 401]);
 
   @override
@@ -1196,10 +1205,10 @@ class _$HttpFailureUnauthorized implements HttpFailureUnauthorized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HttpFailureUnauthorized &&
+            other is _$HttpFailureUnauthorizedImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.status, status) || other.status == status));
   }
@@ -1210,9 +1219,9 @@ class _$HttpFailureUnauthorized implements HttpFailureUnauthorized {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HttpFailureUnauthorizedCopyWith<_$HttpFailureUnauthorized> get copyWith =>
-      __$$HttpFailureUnauthorizedCopyWithImpl<_$HttpFailureUnauthorized>(
-          this, _$identity);
+  _$$HttpFailureUnauthorizedImplCopyWith<_$HttpFailureUnauthorizedImpl>
+      get copyWith => __$$HttpFailureUnauthorizedImplCopyWithImpl<
+          _$HttpFailureUnauthorizedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1325,7 +1334,7 @@ class _$HttpFailureUnauthorized implements HttpFailureUnauthorized {
 
 abstract class HttpFailureUnauthorized implements HttpFailure {
   const factory HttpFailureUnauthorized(
-      [final String message, final int status]) = _$HttpFailureUnauthorized;
+      [final String message, final int status]) = _$HttpFailureUnauthorizedImpl;
 
   @override
   String get message;
@@ -1333,27 +1342,29 @@ abstract class HttpFailureUnauthorized implements HttpFailure {
   int get status;
   @override
   @JsonKey(ignore: true)
-  _$$HttpFailureUnauthorizedCopyWith<_$HttpFailureUnauthorized> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$HttpFailureUnauthorizedImplCopyWith<_$HttpFailureUnauthorizedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$HttpFailureInvalidInputCopyWith<$Res>
+abstract class _$$HttpFailureInvalidInputImplCopyWith<$Res>
     implements $HttpFailureCopyWith<$Res> {
-  factory _$$HttpFailureInvalidInputCopyWith(_$HttpFailureInvalidInput value,
-          $Res Function(_$HttpFailureInvalidInput) then) =
-      __$$HttpFailureInvalidInputCopyWithImpl<$Res>;
+  factory _$$HttpFailureInvalidInputImplCopyWith(
+          _$HttpFailureInvalidInputImpl value,
+          $Res Function(_$HttpFailureInvalidInputImpl) then) =
+      __$$HttpFailureInvalidInputImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, int status});
 }
 
 /// @nodoc
-class __$$HttpFailureInvalidInputCopyWithImpl<$Res>
-    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureInvalidInput>
-    implements _$$HttpFailureInvalidInputCopyWith<$Res> {
-  __$$HttpFailureInvalidInputCopyWithImpl(_$HttpFailureInvalidInput _value,
-      $Res Function(_$HttpFailureInvalidInput) _then)
+class __$$HttpFailureInvalidInputImplCopyWithImpl<$Res>
+    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureInvalidInputImpl>
+    implements _$$HttpFailureInvalidInputImplCopyWith<$Res> {
+  __$$HttpFailureInvalidInputImplCopyWithImpl(
+      _$HttpFailureInvalidInputImpl _value,
+      $Res Function(_$HttpFailureInvalidInputImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1362,7 +1373,7 @@ class __$$HttpFailureInvalidInputCopyWithImpl<$Res>
     Object? message = null,
     Object? status = null,
   }) {
-    return _then(_$HttpFailureInvalidInput(
+    return _then(_$HttpFailureInvalidInputImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1377,8 +1388,8 @@ class __$$HttpFailureInvalidInputCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HttpFailureInvalidInput implements HttpFailureInvalidInput {
-  const _$HttpFailureInvalidInput(
+class _$HttpFailureInvalidInputImpl implements HttpFailureInvalidInput {
+  const _$HttpFailureInvalidInputImpl(
       [this.message = 'Server error', this.status = 500]);
 
   @override
@@ -1394,10 +1405,10 @@ class _$HttpFailureInvalidInput implements HttpFailureInvalidInput {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HttpFailureInvalidInput &&
+            other is _$HttpFailureInvalidInputImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.status, status) || other.status == status));
   }
@@ -1408,9 +1419,9 @@ class _$HttpFailureInvalidInput implements HttpFailureInvalidInput {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HttpFailureInvalidInputCopyWith<_$HttpFailureInvalidInput> get copyWith =>
-      __$$HttpFailureInvalidInputCopyWithImpl<_$HttpFailureInvalidInput>(
-          this, _$identity);
+  _$$HttpFailureInvalidInputImplCopyWith<_$HttpFailureInvalidInputImpl>
+      get copyWith => __$$HttpFailureInvalidInputImplCopyWithImpl<
+          _$HttpFailureInvalidInputImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1523,7 +1534,7 @@ class _$HttpFailureInvalidInput implements HttpFailureInvalidInput {
 
 abstract class HttpFailureInvalidInput implements HttpFailure {
   const factory HttpFailureInvalidInput(
-      [final String message, final int status]) = _$HttpFailureInvalidInput;
+      [final String message, final int status]) = _$HttpFailureInvalidInputImpl;
 
   @override
   String get message;
@@ -1531,27 +1542,28 @@ abstract class HttpFailureInvalidInput implements HttpFailure {
   int get status;
   @override
   @JsonKey(ignore: true)
-  _$$HttpFailureInvalidInputCopyWith<_$HttpFailureInvalidInput> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$HttpFailureInvalidInputImplCopyWith<_$HttpFailureInvalidInputImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$HttpFailureNoInternetCopyWith<$Res>
+abstract class _$$HttpFailureNoInternetImplCopyWith<$Res>
     implements $HttpFailureCopyWith<$Res> {
-  factory _$$HttpFailureNoInternetCopyWith(_$HttpFailureNoInternet value,
-          $Res Function(_$HttpFailureNoInternet) then) =
-      __$$HttpFailureNoInternetCopyWithImpl<$Res>;
+  factory _$$HttpFailureNoInternetImplCopyWith(
+          _$HttpFailureNoInternetImpl value,
+          $Res Function(_$HttpFailureNoInternetImpl) then) =
+      __$$HttpFailureNoInternetImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, int status});
 }
 
 /// @nodoc
-class __$$HttpFailureNoInternetCopyWithImpl<$Res>
-    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureNoInternet>
-    implements _$$HttpFailureNoInternetCopyWith<$Res> {
-  __$$HttpFailureNoInternetCopyWithImpl(_$HttpFailureNoInternet _value,
-      $Res Function(_$HttpFailureNoInternet) _then)
+class __$$HttpFailureNoInternetImplCopyWithImpl<$Res>
+    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureNoInternetImpl>
+    implements _$$HttpFailureNoInternetImplCopyWith<$Res> {
+  __$$HttpFailureNoInternetImplCopyWithImpl(_$HttpFailureNoInternetImpl _value,
+      $Res Function(_$HttpFailureNoInternetImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1560,7 +1572,7 @@ class __$$HttpFailureNoInternetCopyWithImpl<$Res>
     Object? message = null,
     Object? status = null,
   }) {
-    return _then(_$HttpFailureNoInternet(
+    return _then(_$HttpFailureNoInternetImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1575,8 +1587,8 @@ class __$$HttpFailureNoInternetCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HttpFailureNoInternet implements HttpFailureNoInternet {
-  const _$HttpFailureNoInternet(
+class _$HttpFailureNoInternetImpl implements HttpFailureNoInternet {
+  const _$HttpFailureNoInternetImpl(
       [this.message = 'No Internet', this.status = 500]);
 
   @override
@@ -1592,10 +1604,10 @@ class _$HttpFailureNoInternet implements HttpFailureNoInternet {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HttpFailureNoInternet &&
+            other is _$HttpFailureNoInternetImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.status, status) || other.status == status));
   }
@@ -1606,9 +1618,9 @@ class _$HttpFailureNoInternet implements HttpFailureNoInternet {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HttpFailureNoInternetCopyWith<_$HttpFailureNoInternet> get copyWith =>
-      __$$HttpFailureNoInternetCopyWithImpl<_$HttpFailureNoInternet>(
-          this, _$identity);
+  _$$HttpFailureNoInternetImplCopyWith<_$HttpFailureNoInternetImpl>
+      get copyWith => __$$HttpFailureNoInternetImplCopyWithImpl<
+          _$HttpFailureNoInternetImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1721,7 +1733,7 @@ class _$HttpFailureNoInternet implements HttpFailureNoInternet {
 
 abstract class HttpFailureNoInternet implements HttpFailure {
   const factory HttpFailureNoInternet(
-      [final String message, final int status]) = _$HttpFailureNoInternet;
+      [final String message, final int status]) = _$HttpFailureNoInternetImpl;
 
   @override
   String get message;
@@ -1729,27 +1741,27 @@ abstract class HttpFailureNoInternet implements HttpFailure {
   int get status;
   @override
   @JsonKey(ignore: true)
-  _$$HttpFailureNoInternetCopyWith<_$HttpFailureNoInternet> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$HttpFailureNoInternetImplCopyWith<_$HttpFailureNoInternetImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$HttpFailureForbiddenCopyWith<$Res>
+abstract class _$$HttpFailureForbiddenImplCopyWith<$Res>
     implements $HttpFailureCopyWith<$Res> {
-  factory _$$HttpFailureForbiddenCopyWith(_$HttpFailureForbidden value,
-          $Res Function(_$HttpFailureForbidden) then) =
-      __$$HttpFailureForbiddenCopyWithImpl<$Res>;
+  factory _$$HttpFailureForbiddenImplCopyWith(_$HttpFailureForbiddenImpl value,
+          $Res Function(_$HttpFailureForbiddenImpl) then) =
+      __$$HttpFailureForbiddenImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, int status});
 }
 
 /// @nodoc
-class __$$HttpFailureForbiddenCopyWithImpl<$Res>
-    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureForbidden>
-    implements _$$HttpFailureForbiddenCopyWith<$Res> {
-  __$$HttpFailureForbiddenCopyWithImpl(_$HttpFailureForbidden _value,
-      $Res Function(_$HttpFailureForbidden) _then)
+class __$$HttpFailureForbiddenImplCopyWithImpl<$Res>
+    extends _$HttpFailureCopyWithImpl<$Res, _$HttpFailureForbiddenImpl>
+    implements _$$HttpFailureForbiddenImplCopyWith<$Res> {
+  __$$HttpFailureForbiddenImplCopyWithImpl(_$HttpFailureForbiddenImpl _value,
+      $Res Function(_$HttpFailureForbiddenImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1758,7 +1770,7 @@ class __$$HttpFailureForbiddenCopyWithImpl<$Res>
     Object? message = null,
     Object? status = null,
   }) {
-    return _then(_$HttpFailureForbidden(
+    return _then(_$HttpFailureForbiddenImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1773,8 +1785,9 @@ class __$$HttpFailureForbiddenCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HttpFailureForbidden implements HttpFailureForbidden {
-  const _$HttpFailureForbidden([this.message = 'Forbidden', this.status = 403]);
+class _$HttpFailureForbiddenImpl implements HttpFailureForbidden {
+  const _$HttpFailureForbiddenImpl(
+      [this.message = 'Forbidden', this.status = 403]);
 
   @override
   @JsonKey()
@@ -1789,10 +1802,10 @@ class _$HttpFailureForbidden implements HttpFailureForbidden {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HttpFailureForbidden &&
+            other is _$HttpFailureForbiddenImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.status, status) || other.status == status));
   }
@@ -1803,9 +1816,10 @@ class _$HttpFailureForbidden implements HttpFailureForbidden {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HttpFailureForbiddenCopyWith<_$HttpFailureForbidden> get copyWith =>
-      __$$HttpFailureForbiddenCopyWithImpl<_$HttpFailureForbidden>(
-          this, _$identity);
+  _$$HttpFailureForbiddenImplCopyWith<_$HttpFailureForbiddenImpl>
+      get copyWith =>
+          __$$HttpFailureForbiddenImplCopyWithImpl<_$HttpFailureForbiddenImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1918,7 +1932,7 @@ class _$HttpFailureForbidden implements HttpFailureForbidden {
 
 abstract class HttpFailureForbidden implements HttpFailure {
   const factory HttpFailureForbidden([final String message, final int status]) =
-      _$HttpFailureForbidden;
+      _$HttpFailureForbiddenImpl;
 
   @override
   String get message;
@@ -1926,6 +1940,6 @@ abstract class HttpFailureForbidden implements HttpFailure {
   int get status;
   @override
   @JsonKey(ignore: true)
-  _$$HttpFailureForbiddenCopyWith<_$HttpFailureForbidden> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$HttpFailureForbiddenImplCopyWith<_$HttpFailureForbiddenImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

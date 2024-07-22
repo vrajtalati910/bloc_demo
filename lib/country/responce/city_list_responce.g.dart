@@ -6,8 +6,8 @@ part of 'city_list_responce.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CityAddReponce _$$_CityAddReponceFromJson(Map<String, dynamic> json) =>
-    _$_CityAddReponce(
+_$CityAddReponceImpl _$$CityAddReponceImplFromJson(Map<String, dynamic> json) =>
+    _$CityAddReponceImpl(
       data: json['data'] == null
           ? null
           : CityModel.fromJson(json['data'] as Map<String, dynamic>),
@@ -15,7 +15,8 @@ _$_CityAddReponce _$$_CityAddReponceFromJson(Map<String, dynamic> json) =>
       message: json['message'] as String?,
     );
 
-Map<String, dynamic> _$$_CityAddReponceToJson(_$_CityAddReponce instance) =>
+Map<String, dynamic> _$$CityAddReponceImplToJson(
+        _$CityAddReponceImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
       'status': instance.status,

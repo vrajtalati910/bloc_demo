@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc_demo/country/model/country_code_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,12 +13,6 @@ class CountryScreen extends StatefulWidget {
 }
 
 class _CountryScreenState extends State<CountryScreen> {
-  final countryDropdownvalue = ValueNotifier<CountryModel?>(null);
-  final stateDropdownvalue = ValueNotifier<CountryModel?>(null);
-  final cityDropdownvalue = ValueNotifier<CountryModel?>(null);
-  CountryModel? countrySelected;
-  CountryModel? stateSelected;
-  CountryModel? citySelected;
   final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -29,7 +21,7 @@ class _CountryScreenState extends State<CountryScreen> {
       child: Builder(builder: (context) {
         return BlocBuilder<CountryBloc, CountryState>(
           builder: (context, state) {
-            if (state.isLoading) {
+            if (state.initialLoad) {
               return const Scaffold(body: Center(child: CircularProgressIndicator()));
             }
             return Scaffold(
@@ -56,8 +48,6 @@ class _CountryScreenState extends State<CountryScreen> {
                                       context.read<CountryBloc>().add(
                                             CountryEvent.createCity(
                                               name: _controller.text,
-                                              stateId: (stateDropdownvalue.value?.id ?? 0).toString(),
-                                              countryId: (countryDropdownvalue.value?.id ?? 0).toString(),
                                             ),
                                           );
                                       Navigator.of(context, rootNavigator: true).pop();
@@ -82,80 +72,64 @@ class _CountryScreenState extends State<CountryScreen> {
                 body: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ValueListenableBuilder(
-                      valueListenable: countryDropdownvalue,
-                      builder: (context, value, child) {
-                        return Container(
-                          padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black), borderRadius: BorderRadius.circular(5)),
-                          child: DropdownButton<CountryModel>(
-                            isExpanded: true,
-                            underline: const SizedBox(),
-                            hint: const Text('Select Country'),
-                            icon: const Padding(
-                              padding: EdgeInsets.only(right: 0),
-                              child: Icon(Icons.keyboard_arrow_down),
-                            ),
-                            value: value,
-                            items: state.countyList
-                                .where((element) => element.name != null)
-                                .map((e) => DropdownMenuItem(
-                                      value: e,
-                                      child: Text(
-                                        e.name!,
-                                      ),
-                                    ))
-                                .toList(),
-                            onChanged: (CountryModel? newSelectedSubCategory) {
-                              log('sds');
-
-                              countryDropdownvalue.value = newSelectedSubCategory;
-
-                              context
-                                  .read<CountryBloc>()
-                                  .add(CountryEvent.addState(id: (newSelectedSubCategory?.id ?? 0).toString()));
-                            },
-                          ),
-                        );
-                      },
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black), borderRadius: BorderRadius.circular(5)),
+                      child: DropdownButton<CountryModel>(
+                        isExpanded: true,
+                        underline: const SizedBox(),
+                        hint: const Text('Select Country'),
+                        icon: const Padding(
+                          padding: EdgeInsets.only(right: 0),
+                          child: Icon(Icons.keyboard_arrow_down),
+                        ),
+                        value: state.countrySelected,
+                        items: state.countyList
+                            .where((element) => element.name != null)
+                            .map((e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Text(
+                                    e.name!,
+                                  ),
+                                ))
+                            .toList(),
+                        onChanged: (CountryModel? newSelectedSubCategory) {
+                          context.read<CountryBloc>().add(
+                              CountryEvent.addState(countryModel: (newSelectedSubCategory ?? const CountryModel())));
+                        },
+                      ),
                     ),
-                    ValueListenableBuilder(
-                      valueListenable: stateDropdownvalue,
-                      builder: (context, value, child) {
-                        return Container(
-                          padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black), borderRadius: BorderRadius.circular(5)),
-                          child: DropdownButton<CountryModel>(
-                            isExpanded: true,
-                            underline: const SizedBox(),
-                            hint: const Text('Select State'),
-                            icon: const Padding(
-                              padding: EdgeInsets.only(right: 0),
-                              child: Icon(Icons.keyboard_arrow_down),
-                            ),
-                            value: value,
-                            items: state.stateList
-                                .where((element) => element.name != null)
-                                .map((e) => DropdownMenuItem(
-                                      value: e,
-                                      child: Text(
-                                        e.name!,
-                                      ),
-                                    ))
-                                .toList(),
-                            onChanged: (CountryModel? newSelectedSubCategory) {
-                              log('sdsaa');
-
-                              stateDropdownvalue.value = newSelectedSubCategory;
-                              context.read<CountryBloc>().add(CountryEvent.loadCity(
-                                  countryId: (countryDropdownvalue.value?.id ?? 0).toString(),
-                                  stateId: (newSelectedSubCategory?.id ?? 0).toString()));
-                            },
-                          ),
-                        );
-                      },
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black), borderRadius: BorderRadius.circular(5)),
+                      child: DropdownButton<CountryModel>(
+                        isExpanded: true,
+                        underline: const SizedBox(),
+                        hint: const Text('Select State'),
+                        icon: const Padding(
+                          padding: EdgeInsets.only(right: 0),
+                          child: Icon(Icons.keyboard_arrow_down),
+                        ),
+                        value: state.stateDropdownvalue,
+                        items: state.stateList
+                            .where((element) => element.name != null)
+                            .map((e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Text(
+                                    e.name!,
+                                  ),
+                                ))
+                            .toList(),
+                        onChanged: (CountryModel? newSelectedSubCategory) {
+                          context.read<CountryBloc>().add(
+                                CountryEvent.loadCity(
+                                  stateModel: (newSelectedSubCategory) ?? const CountryModel(),
+                                ),
+                              );
+                        },
+                      ),
                     ),
                     Flexible(
                       child: ListView.builder(
@@ -191,10 +165,7 @@ class _CountryScreenState extends State<CountryScreen> {
                                                       context.read<CountryBloc>().add(
                                                             CountryEvent.editCity(
                                                               name: _controller.text,
-                                                              stateId: (stateDropdownvalue.value?.id ?? 0).toString(),
                                                               cityId: (state.cityList[index].id ?? 0).toString(),
-                                                              countryId:
-                                                                  (countryDropdownvalue.value?.id ?? 0).toString(),
                                                             ),
                                                           );
                                                       Navigator.of(context, rootNavigator: true).pop();
